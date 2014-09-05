@@ -136,14 +136,14 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     auto para = (ParallaxNode*)getChildByTag(10);
     
     log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
-    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()));
+    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
     log("index position = (%f, %f)", index.x, index.y);
     
-    auto sonic = Sprite::create("Player.png");
+    auto sonic = Sprite::create("blue_tile.png");
     
     Point processed = PositionForTileCoord(Point(index.x, index.y));
     log("processed = (%f, %f)", processed.x, processed.y);
-    sonic->setPosition(processed.x, processed.y+16);
+    sonic->setPosition(processed.x, processed.y);
     
     
     map->addChild(sonic, 2);
@@ -170,6 +170,17 @@ void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
     }
     prevPt = touchPoint;
     
+    // blue tile following cursor
+    /*
+    auto para = (ParallaxNode*)getChildByTag(10);
+    auto processed = PositionForTileCoord(positionToTileCoord(Point(touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY())));
+    
+    auto blue_tile = Sprite::create("blue_tile.png");
+    blue_tile->setPosition(processed.x, processed.y+16);
+    blue_tile->setTag(1);
+    
+    map->addChild(blue_tile, 3);
+    */
 }
 
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)

@@ -75,7 +75,7 @@
 		FE4AF5B319B8CCCE00A9E581 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5B119B8CCCE00A9E581 /* GameScene.cpp */; };
 		FE4AF5BB19B8CE5500A9E581 /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5B919B8CE5500A9E581 /* Tower.cpp */; };
 		FE4AF5BE19B8CEBA00A9E581 /* AttackTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5BC19B8CEBA00A9E581 /* AttackTower.cpp */; };
-		FE4AF5C219B996BD00A9E581 /* tower.png in Resources */ = {isa = PBXBuildFile; fileRef = FE4AF5C119B996BD00A9E581 /* tower.png */; };
+		FE4AF5C619B9991600A9E581 /* tower.png in Resources */ = {isa = PBXBuildFile; fileRef = FE4AF5C519B9991600A9E581 /* tower.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,7 +284,7 @@
 		FE4AF5BA19B8CE5500A9E581 /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tower.h; path = ../Classes/Tower.h; sourceTree = "<group>"; };
 		FE4AF5BC19B8CEBA00A9E581 /* AttackTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AttackTower.cpp; path = ../Classes/AttackTower.cpp; sourceTree = "<group>"; };
 		FE4AF5BD19B8CEBA00A9E581 /* AttackTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttackTower.h; path = ../Classes/AttackTower.h; sourceTree = "<group>"; };
-		FE4AF5C119B996BD00A9E581 /* tower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tower.png; sourceTree = "<group>"; };
+		FE4AF5C519B9991600A9E581 /* tower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tower.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,7 +479,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FE4AF5C119B996BD00A9E581 /* tower.png */,
+				FE4AF5C519B9991600A9E581 /* tower.png */,
 				0155F66219BA07FD0084A7E8 /* Player.png */,
 				0155F66319BA07FD0084A7E8 /* PlayerPower.png */,
 				0155F66019BA07FD0084A7E8 /* test.tmx */,
@@ -661,7 +661,7 @@
 				0155F66419BA07FD0084A7E8 /* Player.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
-				FE4AF5C219B996BD00A9E581 /* tower.png in Resources */,
+				FE4AF5C619B9991600A9E581 /* tower.png in Resources */,
 				0155F66519BA07FD0084A7E8 /* PlayerPower.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,

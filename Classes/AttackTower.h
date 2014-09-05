@@ -16,7 +16,7 @@ USING_NS_CC;
 
 class AttackTower : public Tower
 {
-    public :
+public :
     AttackTower();
     virtual ~AttackTower();
     void Attack();

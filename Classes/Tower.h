@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GameObject.h"
+
 USING_NS_CC;
 
 enum TOWER_TYPE{
@@ -24,9 +25,10 @@ public:
     Tower();
     virtual ~Tower();
     void release();
-    std::vector<Sprite> getSpriteInRage();
     
-    std::vector<Sprite> spriteInRage;
+    std::vector<GameObject> getSpriteInRage();
+    std::vector<GameObject> spritesInRage;
+    
     TOWER_TYPE eTowerType;
     float HP;
 };

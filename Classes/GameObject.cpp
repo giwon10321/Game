@@ -7,3 +7,13 @@
 //
 
 #include "GameObject.h"
+
+GameObject::GameObject() : body(NULL), eAllianceType(TYPE1)
+{
+    
+}
+
+GameObject::~GameObject()
+{
+    
+}

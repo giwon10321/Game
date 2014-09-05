@@ -7,3 +7,13 @@
 //
 
 #include "NoneAttackTower.h"
+
+NoneAttackTower::NoneAttackTower()
+{
+    
+}
+
+NoneAttackTower::~NoneAttackTower()
+{
+    
+}

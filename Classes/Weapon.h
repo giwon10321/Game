@@ -14,10 +14,11 @@
 
 USING_NS_CC;
 
-class Weapone : public GameObject
+class Weapon : public GameObject
 {
 public:
-    
+    Weapon();
+    virtual ~Weapon();
 };
 
 #endif /* defined(__Game__Weapon__) */

@@ -7,3 +7,13 @@
 //
 
 #include "NormalTower.h"
+
+NormalTower::NormalTower()
+{
+    
+}
+
+NormalTower::~NormalTower()
+{
+    
+}

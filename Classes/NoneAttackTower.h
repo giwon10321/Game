@@ -17,6 +17,8 @@ USING_NS_CC;
 class NoneAttackTower : public Tower
 {
 public:
+    NoneAttackTower();
+    virtual ~NoneAttackTower();
     
 };
 

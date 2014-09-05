@@ -7,3 +7,13 @@
 //
 
 #include "SuperTower.h"
+
+SuperTower::SuperTower()
+{
+    
+}
+
+SuperTower::~SuperTower()
+{
+    
+}

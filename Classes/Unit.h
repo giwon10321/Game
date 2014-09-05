@@ -10,14 +10,15 @@
 #define __Game__Unit__
 
 #include "cocos2d.h"
-#include "GameObject"
+#include "GameObject.h"
 
 USING_NS_CC;
 
 class Unit : public GameObject
 {
 public:
-    
+    Unit();
+    virtual ~Unit();
 };
 
 #endif /* defined(__Game__Unit__) */

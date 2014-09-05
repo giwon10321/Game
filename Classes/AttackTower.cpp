@@ -7,3 +7,13 @@
 //
 
 #include "AttackTower.h"
+
+AttackTower::AttackTower()
+{
+    
+}
+
+AttackTower::~AttackTower()
+{
+    
+}

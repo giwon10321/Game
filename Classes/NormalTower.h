@@ -17,7 +17,8 @@ USING_NS_CC;
 class NormalTower : public AttackTower
 {
 public:
-    
+    NormalTower();
+    virtual ~NormalTower();
 };
 
 #endif /* defined(__Game__NormalTower__) */

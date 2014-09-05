@@ -17,7 +17,8 @@ USING_NS_CC;
 class SuperTower : public AttackTower
 {
 public:
-    
+    SuperTower();
+    virtual ~SuperTower();
 };
 
 #endif /* defined(__Game__SuperTower__) */

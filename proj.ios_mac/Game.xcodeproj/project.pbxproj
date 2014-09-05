@@ -12,6 +12,8 @@
 		0155F66119BA07FD0084A7E8 /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66019BA07FD0084A7E8 /* test.tmx */; };
 		0155F66419BA07FD0084A7E8 /* Player.png in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66219BA07FD0084A7E8 /* Player.png */; };
 		0155F66519BA07FD0084A7E8 /* PlayerPower.png in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66319BA07FD0084A7E8 /* PlayerPower.png */; };
+		0155F66A19BA07FD0084A7E8 /* blue_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66819BA07FD0084A7E8 /* blue_tile.png */; };
+		0155F66B19BA07FD0084A7E8 /* gray_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66919BA07FD0084A7E8 /* gray_tile.png */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -228,6 +230,8 @@
 		0155F66019BA07FD0084A7E8 /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.tmx; sourceTree = "<group>"; };
 		0155F66219BA07FD0084A7E8 /* Player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player.png; sourceTree = "<group>"; };
 		0155F66319BA07FD0084A7E8 /* PlayerPower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayerPower.png; sourceTree = "<group>"; };
+		0155F66819BA07FD0084A7E8 /* blue_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_tile.png; sourceTree = "<group>"; };
+		0155F66919BA07FD0084A7E8 /* gray_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_tile.png; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0155F66819BA07FD0084A7E8 /* blue_tile.png */,
+				0155F66919BA07FD0084A7E8 /* gray_tile.png */,
 				FE4AF5C519B9991600A9E581 /* tower.png */,
 				0155F66219BA07FD0084A7E8 /* Player.png */,
 				0155F66319BA07FD0084A7E8 /* PlayerPower.png */,
@@ -664,11 +670,13 @@
 				FE4AF5C619B9991600A9E581 /* tower.png in Resources */,
 				0155F66519BA07FD0084A7E8 /* PlayerPower.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				0155F66A19BA07FD0084A7E8 /* blue_tile.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				0155F66B19BA07FD0084A7E8 /* gray_tile.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,

@@ -83,6 +83,7 @@
 		FE4AF5D519B9AA0000A9E581 /* NormalTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5D319B9AA0000A9E581 /* NormalTower.cpp */; };
 		FE4AF5D819B9AA5100A9E581 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5D619B9AA5100A9E581 /* Weapon.cpp */; };
 		FE4AF5DB19B9AA7D00A9E581 /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5D919B9AA7D00A9E581 /* Unit.cpp */; };
+		FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FE4AF5DC19B9ADFB00A9E581 /* arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +305,7 @@
 		FE4AF5D719B9AA5100A9E581 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weapon.h; path = ../Classes/Weapon.h; sourceTree = "<group>"; };
 		FE4AF5D919B9AA7D00A9E581 /* Unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Unit.cpp; path = ../Classes/Unit.cpp; sourceTree = "<group>"; };
 		FE4AF5DA19B9AA7D00A9E581 /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unit.h; path = ../Classes/Unit.h; sourceTree = "<group>"; };
+		FE4AF5DC19B9ADFB00A9E581 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -508,6 +510,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FE4AF5DC19B9ADFB00A9E581 /* arrow.png */,
 				0155F66819BA07FD0084A7E8 /* blue_tile.png */,
 				0155F66919BA07FD0084A7E8 /* gray_tile.png */,
 				FE4AF5C519B9991600A9E581 /* tower.png */,
@@ -709,6 +712,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				0155F66119BA07FD0084A7E8 /* test.tmx in Resources */,
+				FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				0155F65F19BA07FD0084A7E8 /* isometric_grass_and_water.png in Resources */,

@@ -10,7 +10,7 @@
 #define __Game__Tower__
 
 #include "cocos2d.h"
-#include "Object.h"
+#include "GameObject.h"
 USING_NS_CC;
 
 enum TOWER_TYPE{
@@ -18,7 +18,7 @@ enum TOWER_TYPE{
     DETECTING_NORMAL
 };
 
-class Tower : public Object
+class Tower: public GameObject
 {
 public:
     Tower();

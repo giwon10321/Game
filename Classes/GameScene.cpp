@@ -72,9 +72,7 @@ bool GameScene::init()
     
     dispatcher->addEventListenerWithSceneGraphPriority( _touchListener, this);
     
-    prevPt = Point(-1, -1);
-    
-    
+//    prevPt = Point(-1, -1);
     
     map = TMXTiledMap::create("test.tmx");
     
@@ -132,7 +130,7 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     Point touchPoint = touch->getLocation();
     
     // log("Default Touch began : (%f %f)",touchPoint.x, touchPoint.y);
-    prevPt = touchPoint;
+//    prevPt = touchPoint;
     auto para = (ParallaxNode*)getChildByTag(10);
     
     log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
@@ -156,19 +154,22 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 
 void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 {
-    Point touchPoint = touch->getLocation();
-    if (prevPt.x != -1 && prevPt.y != -1)
-    {
-        
+    
+//    Point delta = touch->getDelta();
+//    log("delta : %f %f",delta.x,delta.y);
+//    Point touchPoint = touch->getLocation();
+//    if (prevPt.x != -1 && prevPt.y != -1)
+//    {
         //  log("let's move");
-        Point diff = Point(touchPoint.x - prevPt.x, touchPoint.y - prevPt.y);
-        auto para = (ParallaxNode*)getChildByTag(10);
-        Point pt = para->getPosition();
-        pt.x = pt.x + diff.x;
-        pt.y = pt.y + diff.y;
-        para->setPosition(pt);
-    }
-    prevPt = touchPoint;
+//        Point diff = Point(touchPoint.x - prevPt.x, touchPoint.y - prevPt.y);
+    Point diff = touch->getDelta();
+    auto para = (ParallaxNode*)getChildByTag(10);
+    Point pt = para->getPosition();
+    pt.x = pt.x + diff.x;
+    pt.y = pt.y + diff.y;
+    para->setPosition(pt);
+//    }
+//    prevPt = touchPoint;
     
     // blue tile following cursor
     /*
@@ -186,8 +187,7 @@ void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
     log("in touchEnded");
-    
-    prevPt = Point(-1, -1);
+//    prevPt = Point(-1, -1);
 }
 
 Point GameScene::PositionForTileCoord(Point coord)

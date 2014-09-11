@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Tower.h"
+#include "Weapon.h"
 
 USING_NS_CC;
 
@@ -19,7 +20,7 @@ class AttackTower : public Tower
 public :
     AttackTower();
     virtual ~AttackTower();
-    void Attack();
+    void Attack(Point destination);
 };
 
 #endif /* defined(__Game__AttackTower__) */

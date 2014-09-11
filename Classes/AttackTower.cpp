@@ -17,3 +17,8 @@ AttackTower::~AttackTower()
 {
     
 }
+
+void AttackTower::Attack(Point destination)
+{
+    
+}

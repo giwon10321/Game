@@ -48,4 +48,4 @@ out/
 *.tgz
 *.gtgz
 
-Classes/GameScene.cpp
+GameScene.cpp

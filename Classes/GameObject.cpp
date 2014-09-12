@@ -8,7 +8,7 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject() : body(NULL), eAllianceType(TYPE1)
+GameObject::GameObject(Sprite* _body, ALLIANCE _allianceType) : body(_body), eAllianceType(_allianceType)
 {
     
 }

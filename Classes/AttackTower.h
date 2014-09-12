@@ -18,7 +18,9 @@ USING_NS_CC;
 class AttackTower : public Tower
 {
 public :
-    AttackTower();
+    Weapon weapon;
+    
+    AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon);
     virtual ~AttackTower();
     void Attack(Point destination);
 };

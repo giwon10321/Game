@@ -22,11 +22,10 @@ enum ALLIANCE
 class GameObject
 {
 public:
-    GameObject();
+    GameObject(Sprite* _body, ALLIANCE _allianceType);
     virtual ~GameObject();
     Sprite* body;
     ALLIANCE eAllianceType;
 };
-
 
 #endif /* defined(__Game__GameObject__) */

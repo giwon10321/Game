@@ -8,7 +8,7 @@
 
 #include "Weapon.h"
 
-Weapon::Weapon()
+Weapon::Weapon(Sprite* _body, ALLIANCE _allianceType, float _damage):GameObject(_body,_allianceType),damage(_damage)
 {
     
 }

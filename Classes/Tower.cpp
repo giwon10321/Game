@@ -8,7 +8,7 @@
 
 #include "Tower.h"
 
-Tower::Tower()
+Tower::Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP):GameObject(_body, _allianceType) , eTowerType(_towerType) , HP(_HP)
 {
     
 }

@@ -22,7 +22,7 @@ enum TOWER_TYPE{
 class Tower: public GameObject
 {
 public:
-    Tower();
+    Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP);
     virtual ~Tower();
     void release();
     

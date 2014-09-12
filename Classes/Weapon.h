@@ -17,7 +17,8 @@ USING_NS_CC;
 class Weapon : public GameObject
 {
 public:
-    Weapon();
+    float damage;
+    Weapon(Sprite* _body, ALLIANCE _allianceType, float _damage);
     virtual ~Weapon();
 };
 

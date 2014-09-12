@@ -8,7 +8,7 @@
 
 #include "NormalTower.h"
 
-NormalTower::NormalTower()
+NormalTower::NormalTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon):AttackTower(_body, _allianceType, _towerType, _HP, _weapon)
 {
     
 }

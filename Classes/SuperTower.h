@@ -17,7 +17,7 @@ USING_NS_CC;
 class SuperTower : public AttackTower
 {
 public:
-    SuperTower();
+    SuperTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon);
     virtual ~SuperTower();
 };
 

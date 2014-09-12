@@ -8,7 +8,7 @@
 
 #include "Unit.h"
 
-Unit::Unit()
+Unit::Unit(Sprite* _body, ALLIANCE _allianceType):GameObject(_body, _allianceType)
 {
     
 }

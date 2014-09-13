@@ -22,7 +22,7 @@ public :
     
     AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon);
     virtual ~AttackTower();
-    void Attack(Point destination);
+    void Attack(Point destination, TMXTiledMap *map);
 };
 
 #endif /* defined(__Game__AttackTower__) */

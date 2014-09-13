@@ -18,7 +18,12 @@ AttackTower::~AttackTower()
     
 }
 
-void AttackTower::Attack(Point destination)
+void AttackTower::Attack(Point destination, TMXTiledMap *map)
 {
-    
+    Point towerPosition = body->getPosition();
+    weapon.body->setPosition(towerPosition);
+    map->addChild(weapon.body);
+    MoveTo *moveTo  = MoveTo::create(0.5f, destination);
+    weapon.body->runAction(moveTo);
+//    log("tower position : %f %f",towerPosition.x, towerPosition.y);
 }

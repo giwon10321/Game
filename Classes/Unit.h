@@ -17,8 +17,10 @@ USING_NS_CC;
 class Unit : public GameObject
 {
 public:
-    Unit(Sprite* _body, ALLIANCE _allianceType);
+    Unit(Sprite* _body, ALLIANCE _allianceType, float _HP);
     virtual ~Unit();
+    
+    float HP;
 };
 
 #endif /* defined(__Game__Unit__) */

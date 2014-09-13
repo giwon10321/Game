@@ -26,9 +26,9 @@ public:
     virtual ~Tower();
     void release();
     
-    GameObject getNearestSpriteInRange(std::vector<GameObject> objects);
-    std::vector<GameObject> getSpriteInRage();
-    std::vector<GameObject> spritesInRage;
+//    GameObject getNearestSpriteInRange(std::list<GameObject>& objects);
+//    std::list<GameObject> getSpriteInRage();
+//    std::list<GameObject> spritesInRage;
     
     TOWER_TYPE eTowerType;
     float HP;

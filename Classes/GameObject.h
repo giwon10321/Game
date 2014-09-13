@@ -24,7 +24,10 @@ class GameObject
 public:
     GameObject(Sprite* _body, ALLIANCE _allianceType);
     void setPosition(Point pos);
+    Point getPosition();
     virtual ~GameObject();
+    GameObject getNearestSprite(std::list<GameObject>& objects);
+    
     Sprite* body;
     ALLIANCE eAllianceType;
 };

@@ -18,7 +18,10 @@ Tower::~Tower()
     
 }
 
-GameObject Tower::getNearestSpriteInRange(std::vector<GameObject> objects)
-{
-    
-}
+//GameObject Tower::getNearestSpriteInRange(std::list<GameObject>& objects)
+//{
+//    std::list<GameObject>::iterator iterator;
+//    for(iterator = objects.begin(); iterator != objects.end(); ++iterator){
+//        
+//    }
+//}

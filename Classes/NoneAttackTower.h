@@ -17,7 +17,7 @@ USING_NS_CC;
 class NoneAttackTower : public Tower
 {
 public:
-    NoneAttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP);
+    NoneAttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range);
     virtual ~NoneAttackTower();
     
 };

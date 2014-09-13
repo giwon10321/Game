@@ -18,7 +18,8 @@ class Weapon : public GameObject
 {
 public:
     float damage;
-    Weapon(Sprite* _body, ALLIANCE _allianceType, float _damage);
+    float speed;
+    Weapon(Sprite* _body, ALLIANCE _allianceType, float _damage, float _speed);
     virtual ~Weapon();
 };
 

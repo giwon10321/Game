@@ -20,7 +20,7 @@ class AttackTower : public Tower
 public :
     Weapon weapon;
     
-    AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon);
+    AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range, const Weapon& _weapon);
     virtual ~AttackTower();
     void Attack(Point destination, TMXTiledMap *map);
 };

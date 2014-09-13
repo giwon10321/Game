@@ -22,15 +22,17 @@ enum TOWER_TYPE{
 class Tower: public GameObject
 {
 public:
-    Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP);
+    Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range);
     virtual ~Tower();
     void release();
     
+    GameObject getNearestSpriteInRange(std::vector<GameObject> objects);
     std::vector<GameObject> getSpriteInRage();
     std::vector<GameObject> spritesInRage;
     
     TOWER_TYPE eTowerType;
     float HP;
+    int range;
 };
 
 

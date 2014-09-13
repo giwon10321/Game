@@ -8,7 +8,7 @@
 
 #include "AttackTower.h"
 
-AttackTower::AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, Weapon _weapon):Tower(_body, _allianceType, _towerType, _HP), weapon(_weapon)
+AttackTower::AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range, const Weapon& _weapon):Tower(_body, _allianceType, _towerType, _HP, _range), weapon(_weapon)
 {
     
 }

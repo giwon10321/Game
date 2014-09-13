@@ -20,5 +20,7 @@ AttackTower::~AttackTower()
 
 void AttackTower::Attack(Point destination)
 {
+    auto shoot = MoveTo::create(2, destination);
     
+    this->weapon.body->runAction(shoot);
 }

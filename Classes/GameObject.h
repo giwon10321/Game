@@ -23,6 +23,7 @@ class GameObject
 {
 public:
     GameObject(Sprite* _body, ALLIANCE _allianceType);
+    void setPosition(Point pos);
     virtual ~GameObject();
     Sprite* body;
     ALLIANCE eAllianceType;

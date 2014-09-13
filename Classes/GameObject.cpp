@@ -17,3 +17,8 @@ GameObject::~GameObject()
 {
     
 }
+
+void GameObject::setPosition(Point pos)
+{
+    body->setPosition(pos);
+}

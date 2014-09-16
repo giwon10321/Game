@@ -13,6 +13,13 @@
 #define TILEWIDTH 64
 #define MAPWIDTH 15
 #include "cocos2d.h"
+#include "AttackTower.h"
+#include "Weapon.h"
+#include "Unit.h"
+#include <cstdlib>
+#include <ctime>
+#include <list>
+
 USING_NS_CC;
 
 class GameScene : public cocos2d::Layer
@@ -39,11 +46,16 @@ public:
     
     Point positionToTileCoord(Point position);
     
+    void update(float f);
+    
+    void summonEnemy(float f);
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 private:
     cocos2d::Point prevPt;
     TMXTiledMap* map;
+    std::list<Unit> units;
+    std::list<Tower> towers;
 };
 
 

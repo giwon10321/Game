@@ -8,7 +8,6 @@
 
 #include "GameScene.h"
 
-
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -90,6 +89,21 @@ bool GameScene::init()
     
     //    map->addChild(label, 3 );
     
+    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+   
+    auto Atower = AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
+    
+    auto center = PositionForTileCoord(Point(6, 6));
+    
+    Atower.setPosition(Point(center.x, center.y+24));
+    
+//    auto tower = Sprite::create("tower.png");
+    
+    
+  //  tower->setPosition(Point(center.x, center.y+24 ));
+    map->addChild(Atower.body, 4);
+    
+    
     
     
     auto paraNode = ParallaxNode::create();
@@ -101,7 +115,7 @@ bool GameScene::init()
     this->addChild(paraNode, 1);
     
     
-    
+    this->schedule(schedule_selector(GameScene::summonEnemy), 1.0f);
     
     
     //  auto label = LabelTTF::create("Hello World", "Arial", 24);
@@ -137,14 +151,18 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
     log("index position = (%f, %f)", index.x, index.y);
     
-    auto sonic = Sprite::create("blue_tile.png");
+    auto sonic = Sprite::create("Player.png");
     
     Point processed = PositionForTileCoord(Point(index.x, index.y));
     log("processed = (%f, %f)", processed.x, processed.y);
-    sonic->setPosition(processed.x, processed.y);
+    sonic->setPosition(processed.x, processed.y + 16);
     
+    map->addChild(sonic, 3);
     
-    map->addChild(sonic, 2);
+    auto tile = Sprite::create("blue_tile.png");
+    tile->setPosition(processed.x, processed.y);
+    
+    map->addChild(tile, 2);
     
     
     
@@ -155,21 +173,13 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 {
     
-//    Point delta = touch->getDelta();
-//    log("delta : %f %f",delta.x,delta.y);
-//    Point touchPoint = touch->getLocation();
-//    if (prevPt.x != -1 && prevPt.y != -1)
-//    {
-        //  log("let's move");
-//        Point diff = Point(touchPoint.x - prevPt.x, touchPoint.y - prevPt.y);
+
     Point diff = touch->getDelta();
     auto para = (ParallaxNode*)getChildByTag(10);
     Point pt = para->getPosition();
     pt.x = pt.x + diff.x;
     pt.y = pt.y + diff.y;
     para->setPosition(pt);
-//    }
-//    prevPt = touchPoint;
     
     // blue tile following cursor
     /*
@@ -212,6 +222,26 @@ Point GameScene::positionToTileCoord(Point position)
     return Vec2(x,y);
 }
 
+void GameScene::update(float f)
+{
+    // check collisions
+}
+void GameScene::summonEnemy(float f)
+{
+    if(units.size() >= 9)
+        this->unschedule(schedule_selector(GameScene::summonEnemy));
+    srand((unsigned int)time(NULL));
+    Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
+    
+    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+    
+    auto unit = Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
+    
+    unit.setPosition(Point(object_postion.x, object_postion.y+16));
+    
+    map->addChild(unit.body, 5);
+    units.push_front(unit);
+}
 void GameScene::menuCloseCallback(Ref* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)

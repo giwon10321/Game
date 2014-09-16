@@ -21,10 +21,10 @@ AttackTower::~AttackTower()
 void AttackTower::Attack(Point destination, TMXTiledMap *map)
 {
     Point towerPosition = body->getPosition();
-    Point vertex = Point(towerPosition.x, destination.y);
-    
-    
+    Point diff = towerPosition-destination;
+    float angle = CC_RADIANS_TO_DEGREES(diff.getAngle());
     weapon.body->setPosition(towerPosition);
+    weapon.body->setRotation(angle);
     map->addChild(weapon.body);
     MoveTo *moveTo  = MoveTo::create(weapon.speed, destination);
     weapon.body->runAction(moveTo);

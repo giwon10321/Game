@@ -42,8 +42,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 private:
-    cocos2d::Point prevPt;
     TMXTiledMap* map;
+    
 };
 
 

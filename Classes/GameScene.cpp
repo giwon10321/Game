@@ -7,6 +7,8 @@
 //
 
 #include "GameScene.h"
+#include "NormalTower.h"
+#include "Weapon.h"
 
 
 Scene* GameScene::createScene()
@@ -72,11 +74,7 @@ bool GameScene::init()
     
     dispatcher->addEventListenerWithSceneGraphPriority( _touchListener, this);
     
-//    prevPt = Point(-1, -1);
-    
     map = TMXTiledMap::create("test.tmx");
-    
-    map->getPosition();
     
     auto point = PositionForTileCoord(Point(0,0));
     log("coord (0, 0) is (%f, %f)", point.x, point.y);
@@ -87,11 +85,7 @@ bool GameScene::init()
     char buf[100];
     sprintf(buf,"%f,%f", map->getTileSize().width, map->getTileSize().height);
     label->setString(buf);
-    
-    //    map->addChild(label, 3 );
-    
-    
-    
+
     auto paraNode = ParallaxNode::create();
     
     paraNode->setTag(10);
@@ -99,95 +93,43 @@ bool GameScene::init()
     paraNode->addChild(map, 1, Vec2(1.0, 1.0), Vec2(0.0, 0.0));
     
     this->addChild(paraNode, 1);
+
+//    auto towerSprite = Sprite::create("tower.png");
+//    Point towerPosition = PositionForTileCoord(Point(6,5));
+//    towerSprite->setPosition(towerPosition);
+//    
+//    auto weaponSprite = Sprite::create("arrow.png");
+//    Weapon arrow = Weapon(weaponSprite, TYPE1, 100.0f, 0.1f);
+//    
+//    NormalTower attackNormalTower(towerSprite, TYPE1, ARROW_NOMARL, 100.0f, 100, arrow);
+//    map->addChild(attackNormalTower.body);
+//    attackNormalTower.Attack(PositionForTileCoord(Point(12,0)),map);
     
-    
-    
-    
-    
-    //  auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    //  label->setPosition(Vec2(origin.x + visibleSize.width/2,
-    //                       origin.y + visibleSize.height - label->getContentSize().height));
-    
-    // add the label as a child to this layer
-    //  this->addChild(label, 1);
-    
-    // add "HelloWorld" splash screen"
-    //   auto sprite = Sprite::create("HelloWorld.png");
-    
-    // position the sprite on the center of the screen
-    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    
-    // add the sprite as a child to this layer
-    //    this->addChild(sprite, 0);
+//    Point p1 = Point(200,-100);
+//    log("radian angle : %f",p1.getAngle(Point(200,200)));
+//    log("angle %f",CC_RADIANS_TO_DEGREES(p1.getAngle()));
     
     return true;
 }
 
 bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
-    Point touchPoint = touch->getLocation();
-    
-    // log("Default Touch began : (%f %f)",touchPoint.x, touchPoint.y);
-//    prevPt = touchPoint;
-    auto para = (ParallaxNode*)getChildByTag(10);
-    
-    log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
-    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
-    log("index position = (%f, %f)", index.x, index.y);
-    
-    auto sonic = Sprite::create("blue_tile.png");
-    
-    Point processed = PositionForTileCoord(Point(index.x, index.y));
-    log("processed = (%f, %f)", processed.x, processed.y);
-    sonic->setPosition(processed.x, processed.y);
-    
-    
-    map->addChild(sonic, 2);
-    
-    
-    
-    
     return true;
 }
 
 void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 {
-    
-//    Point delta = touch->getDelta();
-//    log("delta : %f %f",delta.x,delta.y);
-//    Point touchPoint = touch->getLocation();
-//    if (prevPt.x != -1 && prevPt.y != -1)
-//    {
-        //  log("let's move");
-//        Point diff = Point(touchPoint.x - prevPt.x, touchPoint.y - prevPt.y);
     Point diff = touch->getDelta();
     auto para = (ParallaxNode*)getChildByTag(10);
     Point pt = para->getPosition();
     pt.x = pt.x + diff.x;
     pt.y = pt.y + diff.y;
     para->setPosition(pt);
-//    }
-//    prevPt = touchPoint;
-    
-    // blue tile following cursor
-    /*
-    auto para = (ParallaxNode*)getChildByTag(10);
-    auto processed = PositionForTileCoord(positionToTileCoord(Point(touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY())));
-    
-    auto blue_tile = Sprite::create("blue_tile.png");
-    blue_tile->setPosition(processed.x, processed.y+16);
-    blue_tile->setTag(1);
-    
-    map->addChild(blue_tile, 3);
-    */
 }
 
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
-    log("in touchEnded");
-//    prevPt = Point(-1, -1);
+    
 }
 
 Point GameScene::PositionForTileCoord(Point coord)

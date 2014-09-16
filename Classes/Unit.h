@@ -11,14 +11,17 @@
 
 #include "cocos2d.h"
 #include "GameObject.h"
+#include "Weapon.h"
 
 USING_NS_CC;
 
 class Unit : public GameObject
 {
 public:
-    Unit(Sprite* _body, ALLIANCE _allianceType, float _HP);
+    Unit(Sprite* _body, ALLIANCE _allianceType, float _HP, Weapon _weapon);
     virtual ~Unit();
+    
+    Weapon weapon;
     float HP;
 };
 

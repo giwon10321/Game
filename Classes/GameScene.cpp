@@ -10,7 +10,6 @@
 #include "NormalTower.h"
 #include "Weapon.h"
 
-
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -85,7 +84,23 @@ bool GameScene::init()
     char buf[100];
     sprintf(buf,"%f,%f", map->getTileSize().width, map->getTileSize().height);
     label->setString(buf);
-
+    
+    //    map->addChild(label, 3 );
+    
+    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+   
+    auto Atower = AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
+    
+    auto center = PositionForTileCoord(Point(6, 6));
+    
+    Atower.setPosition(Point(center.x, center.y+24));
+    
+//    auto tower = Sprite::create("tower.png");
+    
+    
+  //  tower->setPosition(Point(center.x, center.y+24 ));
+    map->addChild(Atower.body, 4);
+    
     auto paraNode = ParallaxNode::create();
     
     paraNode->setTag(10);
@@ -93,27 +108,59 @@ bool GameScene::init()
     paraNode->addChild(map, 1, Vec2(1.0, 1.0), Vec2(0.0, 0.0));
     
     this->addChild(paraNode, 1);
-
-//    auto towerSprite = Sprite::create("tower.png");
-//    Point towerPosition = PositionForTileCoord(Point(6,5));
-//    towerSprite->setPosition(towerPosition);
-//    
-//    auto weaponSprite = Sprite::create("arrow.png");
-//    Weapon arrow = Weapon(weaponSprite, TYPE1, 100.0f, 0.1f);
-//    
-//    NormalTower attackNormalTower(towerSprite, TYPE1, ARROW_NOMARL, 100.0f, 100, arrow);
-//    map->addChild(attackNormalTower.body);
-//    attackNormalTower.Attack(PositionForTileCoord(Point(12,0)),map);
     
-//    Point p1 = Point(200,-100);
-//    log("radian angle : %f",p1.getAngle(Point(200,200)));
-//    log("angle %f",CC_RADIANS_TO_DEGREES(p1.getAngle()));
+    this->schedule(schedule_selector(GameScene::summonEnemy), 1.0f);
+    
+    
+    //  auto label = LabelTTF::create("Hello World", "Arial", 24);
+    
+    // position the label on the center of the screen
+    //  label->setPosition(Vec2(origin.x + visibleSize.width/2,
+    //                       origin.y + visibleSize.height - label->getContentSize().height));
+    
+    // add the label as a child to this layer
+    //  this->addChild(label, 1);
+    
+    // add "HelloWorld" splash screen"
+    //   auto sprite = Sprite::create("HelloWorld.png");
+    
+    // position the sprite on the center of the screen
+    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    
+    // add the sprite as a child to this layer
+    //    this->addChild(sprite, 0);
     
     return true;
 }
 
 bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
+    Point touchPoint = touch->getLocation();
+    
+    // log("Default Touch began : (%f %f)",touchPoint.x, touchPoint.y);
+//    prevPt = touchPoint;
+    auto para = (ParallaxNode*)getChildByTag(10);
+    
+    log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
+    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
+    log("index position = (%f, %f)", index.x, index.y);
+    
+    auto sonic = Sprite::create("Player.png");
+    
+    Point processed = PositionForTileCoord(Point(index.x, index.y));
+    log("processed = (%f, %f)", processed.x, processed.y);
+    sonic->setPosition(processed.x, processed.y + 16);
+    
+    map->addChild(sonic, 3);
+    
+    auto tile = Sprite::create("blue_tile.png");
+    tile->setPosition(processed.x, processed.y);
+    
+    map->addChild(tile, 2);
+    
+    
+    
+    
     return true;
 }
 
@@ -125,6 +172,18 @@ void GameScene::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
     pt.x = pt.x + diff.x;
     pt.y = pt.y + diff.y;
     para->setPosition(pt);
+    
+    // blue tile following cursor
+    /*
+    auto para = (ParallaxNode*)getChildByTag(10);
+    auto processed = PositionForTileCoord(positionToTileCoord(Point(touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY())));
+    
+    auto blue_tile = Sprite::create("blue_tile.png");
+    blue_tile->setPosition(processed.x, processed.y+16);
+    blue_tile->setTag(1);
+    
+    map->addChild(blue_tile, 3);
+    */
 }
 
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
@@ -154,6 +213,26 @@ Point GameScene::positionToTileCoord(Point position)
     return Vec2(x,y);
 }
 
+void GameScene::update(float f)
+{
+    // check collisions
+}
+void GameScene::summonEnemy(float f)
+{
+    if(units.size() >= 9)
+        this->unschedule(schedule_selector(GameScene::summonEnemy));
+    srand((unsigned int)time(NULL));
+    Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
+    
+    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+    
+    auto unit = Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
+    
+    unit.setPosition(Point(object_postion.x, object_postion.y+16));
+    
+    map->addChild(unit.body, 5);
+    units.push_front(unit);
+}
 void GameScene::menuCloseCallback(Ref* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)

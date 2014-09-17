@@ -69,11 +69,12 @@ bool GameScene::init()
     _touchListener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
     _touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
     
-    EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
+    auto dispatcher = Director::getInstance()->getEventDispatcher();
     
     dispatcher->addEventListenerWithSceneGraphPriority( _touchListener, this);
     
     map = TMXTiledMap::create("test.tmx");
+    map->setScale(1.5f);
     
     auto point = PositionForTileCoord(Point(0,0));
     log("coord (0, 0) is (%f, %f)", point.x, point.y);
@@ -87,19 +88,20 @@ bool GameScene::init()
     
     //    map->addChild(label, 3 );
     
-    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
    
-    auto Atower = AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
+    auto* Atower = new AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
+    towers.push_front(Atower);
     
     auto center = PositionForTileCoord(Point(6, 6));
     
-    Atower.setPosition(Point(center.x, center.y+24));
+    Atower->setPosition(Point(center.x, center.y+24));
     
 //    auto tower = Sprite::create("tower.png");
     
     
   //  tower->setPosition(Point(center.x, center.y+24 ));
-    map->addChild(Atower.body, 4);
+    map->addChild(Atower->body, 4);
     
     auto paraNode = ParallaxNode::create();
     
@@ -139,27 +141,24 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     
     // log("Default Touch began : (%f %f)",touchPoint.x, touchPoint.y);
 //    prevPt = touchPoint;
-    auto para = (ParallaxNode*)getChildByTag(10);
-    
-    log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
-    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
-    log("index position = (%f, %f)", index.x, index.y);
-    
-    auto sonic = Sprite::create("Player.png");
-    
-    Point processed = PositionForTileCoord(Point(index.x, index.y));
-    log("processed = (%f, %f)", processed.x, processed.y);
-    sonic->setPosition(processed.x, processed.y + 16);
-    
-    map->addChild(sonic, 3);
-    
-    auto tile = Sprite::create("blue_tile.png");
-    tile->setPosition(processed.x, processed.y);
-    
-    map->addChild(tile, 2);
-    
-    
-    
+//    auto para = (ParallaxNode*)getChildByTag(10);
+//    
+//    log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
+//    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
+//    log("index position = (%f, %f)", index.x, index.y);
+//    
+//    auto sonic = Sprite::create("Player.png");
+//    
+//    Point processed = PositionForTileCoord(Point(index.x, index.y));
+//    log("processed = (%f, %f)", processed.x, processed.y);
+//    sonic->setPosition(processed.x, processed.y + 16);
+//    
+//    map->addChild(sonic, 3);
+//    
+//    auto tile = Sprite::create("blue_tile.png");
+//    tile->setPosition(processed.x, processed.y);
+//    
+//    map->addChild(tile, 2);
     
     return true;
 }
@@ -216,6 +215,10 @@ Point GameScene::positionToTileCoord(Point position)
 void GameScene::update(float f)
 {
     // check collisions
+    std::list<Tower*>::iterator iterator;
+    for(iterator = towers.begin(); iterator != towers.end(); ++iterator){
+//        iterator->getNearestSprite();
+    }
 }
 void GameScene::summonEnemy(float f)
 {
@@ -224,13 +227,13 @@ void GameScene::summonEnemy(float f)
     srand((unsigned int)time(NULL));
     Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
     
-    auto weapon = Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
     
-    auto unit = Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
+    auto* unit = new Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
     
-    unit.setPosition(Point(object_postion.x, object_postion.y+16));
+    unit->setPosition(Point(object_postion.x, object_postion.y+16));
     
-    map->addChild(unit.body, 5);
+    map->addChild(unit->body, 5);
     units.push_front(unit);
 }
 void GameScene::menuCloseCallback(Ref* pSender)

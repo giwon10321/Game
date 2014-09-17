@@ -17,7 +17,7 @@ USING_NS_CC;
 class NormalTower : public AttackTower
 {
 public:
-    NormalTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range,const Weapon& _weapon);
+    NormalTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range,Weapon* _weapon);
     virtual ~NormalTower();
 };
 

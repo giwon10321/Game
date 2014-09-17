@@ -26,7 +26,8 @@ public:
     void setPosition(Point pos);
     Point getPosition();
     virtual ~GameObject();
-    GameObject getNearestSprite(std::list<GameObject>& objects);
+//    GameObject& getNearestSprite(std::list<GameObject>& objects);
+//    templete 
     
     Sprite* body;
     ALLIANCE eAllianceType;

@@ -53,8 +53,8 @@ public:
     CREATE_FUNC(GameScene);
 private:
     TMXTiledMap* map;
-    std::list<Unit> units;
-    std::list<Tower> towers;
+    std::list<Unit*> units;
+    std::list<Tower*> towers;
 };
 
 

@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GameObject.h"
+#include "Unit.h"
 
 USING_NS_CC;
 
@@ -24,15 +25,14 @@ class Tower: public GameObject
 public:
     Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range);
     virtual ~Tower();
+    virtual void Attack(GameObject* target, TMXTiledMap* map) = 0;
     void release();
-    
-//    GameObject getNearestSpriteInRange(std::list<GameObject>& objects);
-//    std::list<GameObject> getSpriteInRage();
-//    std::list<GameObject> spritesInRage;
     
     TOWER_TYPE eTowerType;
     float HP;
     int range;
+    Unit* target;
+    list<Unit*> targets;
 };
 
 

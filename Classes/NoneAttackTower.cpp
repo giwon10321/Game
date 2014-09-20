@@ -17,3 +17,8 @@ NoneAttackTower::~NoneAttackTower()
 {
     
 }
+
+void NoneAttackTower::Attack(GameObject* target, TMXTiledMap* map)
+{
+    
+}

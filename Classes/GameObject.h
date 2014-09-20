@@ -10,7 +10,10 @@
 #define __Game__GameObject__
 
 #include "cocos2d.h"
+#include <iostream>
+
 USING_NS_CC;
+using namespace std;
 
 enum ALLIANCE
 {
@@ -26,8 +29,21 @@ public:
     void setPosition(Point pos);
     Point getPosition();
     virtual ~GameObject();
-//    GameObject& getNearestSprite(std::list<GameObject>& objects);
-//    templete 
+    
+    template <typename T> void getNearestObject(list<T*> &objects, T*& target){
+        Point thisPosition = this->getPosition();
+        
+        float nearestDistance = -1.0f;
+        typename list<T*>::iterator iterator;
+        for(iterator = objects.begin(); iterator != objects.end(); ++iterator){
+            float distance = thisPosition.getDistance(((GameObject*)(*iterator))->getPosition());
+            if(nearestDistance == -1.0f || distance < nearestDistance){
+                nearestDistance = distance;
+                target = *iterator;
+                cout<<target<<endl;
+            }
+        }
+    }
     
     Sprite* body;
     ALLIANCE eAllianceType;

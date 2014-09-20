@@ -16,11 +16,10 @@
 #include "AttackTower.h"
 #include "Weapon.h"
 #include "Unit.h"
-#include <cstdlib>
-#include <ctime>
-#include <list>
+#include <iostream>
 
 USING_NS_CC;
+using namespace std;
 
 class GameScene : public cocos2d::Layer
 {

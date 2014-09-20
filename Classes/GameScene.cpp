@@ -112,6 +112,7 @@ bool GameScene::init()
     this->addChild(paraNode, 1);
     
     this->schedule(schedule_selector(GameScene::summonEnemy), 1.0f);
+    this->schedule(schedule_selector(GameScene::update), 1.0f);
     
     
     //  auto label = LabelTTF::create("Hello World", "Arial", 24);
@@ -215,9 +216,16 @@ Point GameScene::positionToTileCoord(Point position)
 void GameScene::update(float f)
 {
     // check collisions
+    list<Unit*>::iterator _iterator;
+    for(_iterator = units.begin(); _iterator != units.end(); ++_iterator){
+        cout<<"address in update : "<<*_iterator<<endl;
+    }
     std::list<Tower*>::iterator iterator;
+    Unit* target = NULL;
+    
     for(iterator = towers.begin(); iterator != towers.end(); ++iterator){
-//        iterator->getNearestSprite();
+        (*iterator)->getNearestObject(units,target);
+        (*iterator)->target = target;
     }
 }
 void GameScene::summonEnemy(float f)

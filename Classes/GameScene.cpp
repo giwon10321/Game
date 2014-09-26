@@ -220,6 +220,18 @@ void GameScene::update(float f)
 //        iterator->getNearestSprite();
     }
 }
+
+void checkCollision(int flag)
+{
+    if(flag == 0) // tower vs. unit weapon
+    {
+        
+    }
+    else          // unit vs. tower weapon
+    {
+        
+    }
+}
 void GameScene::summonEnemy(float f)
 {
     if(units.size() >= 9)

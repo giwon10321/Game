@@ -46,6 +46,8 @@ public:
     
     Point positionToTileCoord(Point position);
     
+    void checkCollision(int flag);
+    
     void update(float f);
     
     void summonEnemy(float f);

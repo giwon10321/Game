@@ -22,10 +22,11 @@ enum ALLIANCE
     TYPE3
 };
 
-class GameObject
+class GameObject : public Node
 {
 public:
-    GameObject(Sprite* _body, ALLIANCE _allianceType);
+    GameObject(Layer* _gameLayer, Point position, ALLIANCE _allianceType);
+    GameObject* initGameObject(Layer* _gameLayer, Point position, ALLIANCE _allianceType);
     void setPosition(Point pos);
     Point getPosition();
     virtual ~GameObject();
@@ -47,6 +48,9 @@ public:
     
     Sprite* body;
     ALLIANCE eAllianceType;
+    Layer* gameLayer;
+    Point position;
+    
 };
 
 #endif /* defined(__Game__GameObject__) */

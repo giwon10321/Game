@@ -14,7 +14,6 @@
 #define MAPWIDTH 15
 #include "cocos2d.h"
 #include "AttackTower.h"
-#include "Weapon.h"
 #include "Unit.h"
 #include <iostream>
 

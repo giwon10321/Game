@@ -8,9 +8,9 @@
 
 #include "NoneAttackTower.h"
 
-NoneAttackTower::NoneAttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range):Tower(_body, _allianceType, _towerType, _HP, _range)
+NoneAttackTower::NoneAttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):Tower(_gameLayer, position, _allianceType, _towerType)
 {
-    
+    this->initNoneAttackTower();
 }
 
 NoneAttackTower::~NoneAttackTower()
@@ -18,7 +18,11 @@ NoneAttackTower::~NoneAttackTower()
     
 }
 
-void NoneAttackTower::Attack(GameObject* target, TMXTiledMap* map)
-{
-    
+NoneAttackTower* NoneAttackTower::initNoneAttackTower(){
+    return this;
 }
+
+//void NoneAttackTower::Attack(GameObject* target, TMXTiledMap* map)
+//{
+//    
+//}

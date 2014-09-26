@@ -8,12 +8,16 @@
 
 #include "SuperTower.h"
 
-SuperTower::SuperTower(Sprite* _body, ALLIANCE _allianceType, TOWER_TYPE _towerType, float _HP, int _MP, int _range, Weapon* _weapon):AttackTower(_body, _allianceType, _towerType, _HP, _range, _weapon)
+SuperTower::SuperTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, position, _allianceType, _towerType)
 {
-    
+    this->initSuperTower();
 }
 
 SuperTower::~SuperTower()
 {
     
+}
+
+SuperTower* SuperTower::initSuperTower(){
+    return this;
 }

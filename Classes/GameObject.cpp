@@ -8,14 +8,24 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(Sprite* _body, ALLIANCE _allianceType) : body(_body), eAllianceType(_allianceType)
+GameObject::GameObject(Layer* _gameLayer, Point _position, ALLIANCE _allianceType) : eAllianceType(_allianceType)
 {
-    
+    this->initGameObject(_gameLayer, _position, _allianceType);
 }
 
 GameObject::~GameObject()
 {
     
+}
+
+GameObject* GameObject::initGameObject(Layer* _gameLayer, Point _position, ALLIANCE _allianceType)
+{
+    Node::onEnter();
+    this->gameLayer = _gameLayer;
+    this->position = _position;
+    this->eAllianceType = _allianceType;
+    
+    return this;
 }
 
 void GameObject::setPosition(Point pos)
@@ -27,20 +37,3 @@ Point GameObject::getPosition()
 {
     return body->getPosition();
 }
-
-//GameObject& GameObject::getNearestSprite(std::list<GameObject>& objects)
-//{
-//    GameObject nearestObject = GameObject(NULL,TYPE1);
-//    Point position = this->getPosition();
-//    
-//    float nearestDistance = -1.0f;
-//    std::list<GameObject>::iterator iterator;
-//    for(iterator = objects.begin(); iterator != objects.end(); ++iterator){
-//        float distance = position.getDistance(iterator->getPosition());
-//        if(nearestDistance == -1.0f || distance < nearestDistance){
-//            nearestDistance = distance;
-//            nearestObject = *iterator;
-//        }
-//    }
-//    return nearestObject;
-//}

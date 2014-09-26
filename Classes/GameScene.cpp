@@ -8,7 +8,6 @@
 
 #include "GameScene.h"
 #include "NormalTower.h"
-#include "Weapon.h"
 
 Scene* GameScene::createScene()
 {
@@ -77,31 +76,31 @@ bool GameScene::init()
     map->setScale(1.5f);
     
     auto point = PositionForTileCoord(Point(0,0));
-    log("coord (0, 0) is (%f, %f)", point.x, point.y);
+//    log("coord (0, 0) is (%f, %f)", point.x, point.y);
     
     auto label = LabelTTF::create("Hello World", "Arial", 15);
     label->setPosition(point.x, point.y);
     
-    char buf[100];
-    sprintf(buf,"%f,%f", map->getTileSize().width, map->getTileSize().height);
-    label->setString(buf);
+//    char buf[100];
+//    sprintf(buf,"%f,%f", map->getTileSize().width, map->getTileSize().height);
+//    label->setString(buf);
     
     //    map->addChild(label, 3 );
     
-    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+//    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
    
-    auto* Atower = new AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
-    towers.push_front(Atower);
+//    auto* Atower = new AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
+//    towers.push_front(Atower);
     
-    auto center = PositionForTileCoord(Point(6, 6));
+//    auto center = PositionForTileCoord(Point(6, 6));
     
-    Atower->setPosition(Point(center.x, center.y+24));
+//    Atower->setPosition(Point(center.x, center.y+24));
     
 //    auto tower = Sprite::create("tower.png");
     
     
   //  tower->setPosition(Point(center.x, center.y+24 ));
-    map->addChild(Atower->body, 4);
+//    map->addChild(Atower->body, 4);
     
     auto paraNode = ParallaxNode::create();
     
@@ -111,8 +110,8 @@ bool GameScene::init()
     
     this->addChild(paraNode, 1);
     
-    this->schedule(schedule_selector(GameScene::summonEnemy), 1.0f);
-    this->schedule(schedule_selector(GameScene::update), 1.0f);
+//    this->schedule(schedule_selector(GameScene::summonEnemy), 1.0f);
+//    this->schedule(schedule_selector(GameScene::update), 1.0f);
     
     
     //  auto label = LabelTTF::create("Hello World", "Arial", 24);
@@ -216,17 +215,18 @@ Point GameScene::positionToTileCoord(Point position)
 void GameScene::update(float f)
 {
     // check collisions
-    list<Unit*>::iterator _iterator;
-    for(_iterator = units.begin(); _iterator != units.end(); ++_iterator){
-        cout<<"address in update : "<<*_iterator<<endl;
-    }
-    std::list<Tower*>::iterator iterator;
-    Unit* target = NULL;
-    
-    for(iterator = towers.begin(); iterator != towers.end(); ++iterator){
-        (*iterator)->getNearestObject(units,target);
-        (*iterator)->target = target;
-    }
+//    list<Unit*>::iterator _iterator;
+//    for(_iterator = units.begin(); _iterator != units.end(); ++_iterator){
+//        cout<<"address in update : "<<*_iterator<<endl;
+//    }
+//    std::list<Tower*>::iterator iterator;
+//    Unit* target = NULL;
+//    
+//    for(iterator = towers.begin(); iterator != towers.end(); ++iterator){
+//        (*iterator)->getNearestObject(units,target);
+//        (*iterator)->target = target;
+//        (*iterator)->Attack(target, map);
+//    }
 }
 void GameScene::summonEnemy(float f)
 {
@@ -235,14 +235,12 @@ void GameScene::summonEnemy(float f)
     srand((unsigned int)time(NULL));
     Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
     
-    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
+//    auto* unit = new Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
     
-    auto* unit = new Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
-    
-    unit->setPosition(Point(object_postion.x, object_postion.y+16));
-    
-    map->addChild(unit->body, 5);
-    units.push_front(unit);
+//    unit->setPosition(Point(object_postion.x, object_postion.y+16));
+//    
+//    map->addChild(unit->body, 5);
+//    units.push_front(unit);
 }
 void GameScene::menuCloseCallback(Ref* pSender)
 {

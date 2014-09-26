@@ -19,6 +19,7 @@ class NoneAttackTower : public Tower
 public:
     NoneAttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range);
     virtual ~NoneAttackTower();
+    virtual void Attack(GameObject* target, TMXTiledMap* map);
     
 };
 

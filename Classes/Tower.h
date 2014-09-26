@@ -23,16 +23,16 @@ enum TOWER_TYPE{
 class Tower: public GameObject
 {
 public:
-    Tower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range);
+    Tower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~Tower();
-    virtual void Attack(GameObject* target, TMXTiledMap* map) = 0;
+    Tower* initTower(TOWER_TYPE _towerType);
+    virtual void Attack(Unit*& target, TMXTiledMap* map) = 0;
     void release();
     
     TOWER_TYPE eTowerType;
     float HP;
     int range;
     Unit* target;
-    list<Unit*> targets;
 };
 
 

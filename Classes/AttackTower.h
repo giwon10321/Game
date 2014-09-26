@@ -10,20 +10,18 @@
 #define __Game__AttackTower__
 
 #include "cocos2d.h"
-#include "GameObject.h"
 #include "Tower.h"
-#include "Weapon.h"
 
 USING_NS_CC;
 
 class AttackTower : public Tower
 {
 public :
-    Weapon* weapon;
-    
-    AttackTower(Sprite* _body, ALLIANCE _allianceType,  TOWER_TYPE _towerType, float _HP, int _range, Weapon* _weapon);
+    AttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    AttackTower* initAttackTower();
     virtual ~AttackTower();
-    void Attack(GameObject* target, TMXTiledMap* map);
+//    void Attack(Unit*& target, TMXTiledMap* map);
+    void update(float delta);
 };
 
 #endif /* defined(__Game__AttackTower__) */

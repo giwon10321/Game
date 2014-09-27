@@ -20,8 +20,11 @@ public :
     AttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     AttackTower* initAttackTower();
     virtual ~AttackTower();
-//    void Attack(Unit*& target, TMXTiledMap* map);
-    void update(float delta);
+    void setTarget(Unit* enermy);
+    
+    float attackRate;
+    float damage;
+    Sprite* weapon;
 };
 
 #endif /* defined(__Game__AttackTower__) */

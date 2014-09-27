@@ -92,6 +92,8 @@ bool GameScene::init()
 //    auto* Atower = new AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
 //    towers.push_front(Atower);
     
+    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
+    map->addChild(normalTower->body,4);
 //    auto center = PositionForTileCoord(Point(6, 6));
     
 //    Atower->setPosition(Point(center.x, center.y+24));

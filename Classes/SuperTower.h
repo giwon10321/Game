@@ -20,6 +20,9 @@ public:
     SuperTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~SuperTower();
     SuperTower* initSuperTower();
+    void update(float delta);
+    void attack(float _attackRate);
+    
     int MP;
 };
 

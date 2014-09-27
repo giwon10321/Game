@@ -21,3 +21,13 @@ SuperTower::~SuperTower()
 SuperTower* SuperTower::initSuperTower(){
     return this;
 }
+
+void SuperTower::update(float delta)
+{
+    
+}
+
+void SuperTower::attack(float _attackRate)
+{
+    
+}

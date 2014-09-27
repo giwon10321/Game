@@ -19,8 +19,11 @@ class Unit : public GameObject
 public:
     Unit();
     Unit(Layer* _gameLayer, Point _position, ALLIANCE _allianceType);
+    Unit* initUnit();
     virtual ~Unit();
+    
     float HP;
+    Sprite* weapon;
 };
 
 #endif /* defined(__Game__Unit__) */

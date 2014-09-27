@@ -18,9 +18,11 @@ class NormalTower : public AttackTower
 {
 public:
     NormalTower(Layer* _gameLayer, Point position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
-    virtual ~NormalTower();
     NormalTower* initNormalTower();
-    
+    virtual ~NormalTower();
+    void shootWeapon();
+    void attack(float _attackRate);
+    void update(float delta);
 };
 
 #endif /* defined(__Game__NormalTower__) */

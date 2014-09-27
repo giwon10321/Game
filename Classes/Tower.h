@@ -26,7 +26,7 @@ public:
     Tower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~Tower();
     Tower* initTower(TOWER_TYPE _towerType);
-    virtual void Attack(Unit*& target, TMXTiledMap* map) = 0;
+    virtual void attack(float _attackRate) = 0;
     void release();
     
     TOWER_TYPE eTowerType;

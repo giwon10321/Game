@@ -14,8 +14,11 @@
 #define MAPWIDTH 15
 #include "cocos2d.h"
 //#include "AttackTower.h"
-//#include "Unit.h"
+#include "Unit.h" //
+//#include "Tower.h"
 #include <iostream>
+#include "NormalTower.h"
+
 
 USING_NS_CC;
 using namespace std;
@@ -59,8 +62,8 @@ public:
     CREATE_FUNC(GameScene);
 private:
     
-//    std::list<Unit*> units;
-//    std::list<Tower*> towers;
+    std::list<Unit*> units;
+    std::list<NormalTower*> towers;
     int player_gold;
     Label* player_gold_label;
 };

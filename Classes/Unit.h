@@ -9,9 +9,10 @@
 #ifndef __Game__Unit__
 #define __Game__Unit__
 
+#ifndef __Game__GameScene__
 #include "cocos2d.h"
+#endif
 #include "GameObject.h"
-
 USING_NS_CC;
 
 class Tower;

@@ -7,7 +7,7 @@
 //
 
 #include "GameScene.h"
-#include "NormalTower.h"
+//#include "NormalTower.h"
 
 Scene* GameScene::createScene()
 {
@@ -95,6 +95,7 @@ bool GameScene::init()
 
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
+    towers.push_front(normalTower);
    // map->addChild(normalTower->body,4);
 
     

@@ -10,12 +10,14 @@
 #define __Game__GameObject__
 
 #include "cocos2d.h"
-#include "GameScene.h"
+//#include "GameScene.h"
 #include <iostream>
 
 USING_NS_CC;
 using namespace std;
 
+
+class GameScene;
 enum ALLIANCE
 {
     TYPE1 = 0,

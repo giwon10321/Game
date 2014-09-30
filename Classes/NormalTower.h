@@ -9,7 +9,10 @@
 #ifndef __Game__NormalTower__
 #define __Game__NormalTower__
 
+#ifndef __Game__GameScene__
 #include "cocos2d.h"
+#endif
+
 #include "AttackTower.h"
 
 USING_NS_CC;

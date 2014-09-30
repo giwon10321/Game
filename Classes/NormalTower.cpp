@@ -23,9 +23,13 @@ NormalTower* NormalTower::initNormalTower()
     this->body = Sprite::create("tower.png");
     this->body->setPosition(this->position);
     this->weapon = Sprite::create("arrow.png");
-    this->HP = 100;
+    this->maxHP = 100.0f;
+    this->currentHP = 100.0f;
     this->range = 60;
     this->attackRate = 1.0f;
+    this->damage = 30.0f;
+    
+    this->scheduleUpdate();
     
     return this;
 }
@@ -42,5 +46,5 @@ void NormalTower::shootWeapon()
 
 void NormalTower::update(float delta)
 {
-    
+    log("test");
 }

@@ -11,15 +11,16 @@
 
 #include "cocos2d.h"
 #include "GameObject.h"
-#include "Unit.h"
 
 USING_NS_CC;
+
 
 enum TOWER_TYPE{
     ARROW_NOMARL = 0,
     DETECTING_NORMAL
 };
 
+class Unit;
 class Tower: public GameObject
 {
 public:
@@ -30,9 +31,11 @@ public:
     void release();
     
     TOWER_TYPE eTowerType;
-    float HP;
+    float maxHP;
+    float currentHP;
     int range;
     Unit* target;
+    list<Unit*> attackBy;
 };
 
 

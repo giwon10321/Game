@@ -45,12 +45,11 @@ public:
             }
         }
     }
-    
+
     Sprite* body;
     ALLIANCE eAllianceType;
     Layer* gameLayer;
     Point position;
     
 };
-
 #endif /* defined(__Game__GameObject__) */

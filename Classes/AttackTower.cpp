@@ -7,6 +7,7 @@
 //
 
 #include "AttackTower.h"
+#include "Unit.h"
 
 AttackTower::AttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):Tower(_gameLayer, _position, _allianceType, _towerType)
 {
@@ -28,4 +29,22 @@ void AttackTower::setTarget(Unit *enermy)
     this->target = nullptr;
     this->target = enermy;
     this->attack(this->attackRate);
+}
+
+void AttackTower::damageEnermy()
+{
+    this->target->gotDamaged(this->damage);
+}
+
+void AttackTower::targetKilled()
+{
+    if(this->target != nullptr){
+        this->target = nullptr;
+    }
+    this->unschedule(schedule_selector(Tower::attack));
+}
+
+void AttackTower::lostSightOfEnermy()
+{
+    
 }

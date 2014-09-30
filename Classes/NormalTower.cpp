@@ -8,7 +8,7 @@
 
 #include "NormalTower.h"
 
-NormalTower::NormalTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, _position, _allianceType, _towerType)
+NormalTower::NormalTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, _position, _allianceType, _towerType)
 {
     this->initNormalTower();
 }
@@ -28,6 +28,10 @@ NormalTower* NormalTower::initNormalTower()
     this->range = 60;
     this->attackRate = 1.0f;
     this->damage = 30.0f;
+    
+    this->addChild(this->body);
+
+    this->gameLayer->map->addChild(this, 99);
     
     this->scheduleUpdate();
     

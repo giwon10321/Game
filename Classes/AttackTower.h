@@ -17,7 +17,7 @@ USING_NS_CC;
 class AttackTower : public Tower
 {
 public :
-    AttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    AttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     AttackTower* initAttackTower();
     virtual ~AttackTower();
     void setTarget(Unit* enermy);

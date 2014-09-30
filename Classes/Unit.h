@@ -19,7 +19,7 @@ class Unit : public GameObject
 {
 public:
     Unit();
-    Unit(Layer* _gameLayer, Point _position, ALLIANCE _allianceType);
+    Unit(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType);
     Unit* initUnit();
     virtual ~Unit();
     void gotDamaged(float _damage);
@@ -30,7 +30,7 @@ public:
     int range;
     Sprite* weapon;
     Tower* target;
-    list<Tower*> attackBy;
+    std::list<Tower*> attackBy;
 };
 
 #endif /* defined(__Game__Unit__) */

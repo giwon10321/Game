@@ -78,31 +78,25 @@ bool GameScene::init()
     auto point = PositionForTileCoord(Point(0,0));
 //    log("coord (0, 0) is (%f, %f)", point.x, point.y);
     
-    auto label = LabelTTF::create("Hello World", "Arial", 15);
+    auto label = LabelTTF::create("Hello World", "Arial", 30);
     label->setPosition(point.x, point.y);
     
-//    char buf[100];
-//    sprintf(buf,"%f,%f", map->getTileSize().width, map->getTileSize().height);
-//    label->setString(buf);
+    player_gold_label = Label::create();
+    
+    char buf[100];
+    sprintf(buf,"Gold: %d", player_gold);
+    player_gold_label->setSystemFontSize(20);
+    player_gold_label->setString(buf);
+    player_gold_label->setPosition(Vec2(origin.x + visibleSize.width - player_gold_label->getContentSize().width/2 ,                                        origin.y + visibleSize.height - player_gold_label->getContentSize().height/2));
+    this->addChild(player_gold_label, 10);
     
     //    map->addChild(label, 3 );
     
-//    auto* weapon = new Weapon(Sprite::create("arrow.png"), TYPE1 , 50, 100);
-   
-//    auto* Atower = new AttackTower(Sprite::create("tower.png"), TYPE1, ARROW_NOMARL, 100, 50, weapon);
-//    towers.push_front(Atower);
+
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
-    map->addChild(normalTower->body,4);
-//    auto center = PositionForTileCoord(Point(6, 6));
-    
-//    Atower->setPosition(Point(center.x, center.y+24));
-    
-//    auto tower = Sprite::create("tower.png");
-    
-    
-  //  tower->setPosition(Point(center.x, center.y+24 ));
-//    map->addChild(Atower->body, 4);
+   // map->addChild(normalTower->body,4);
+
     
     auto paraNode = ParallaxNode::create();
     
@@ -244,10 +238,10 @@ void checkCollision(int flag)
 }
 void GameScene::summonEnemy(float f)
 {
-    if(units.size() >= 9)
-        this->unschedule(schedule_selector(GameScene::summonEnemy));
-    srand((unsigned int)time(NULL));
-    Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
+//    if(units.size() >= 9)
+//        this->unschedule(schedule_selector(GameScene::summonEnemy));
+//    srand((unsigned int)time(NULL));
+//    Point object_postion = PositionForTileCoord(Point(rand()%15, rand()%15));
     
 //    auto* unit = new Unit(Sprite::create("Player.png"), TYPE1 , 50, weapon);
     
@@ -256,6 +250,24 @@ void GameScene::summonEnemy(float f)
 //    map->addChild(unit->body, 5);
 //    units.push_front(unit);
 }
+void GameScene::awardGold(int gold)
+{
+    player_gold = player_gold + gold;
+    
+}
+bool GameScene::circle(Point circlePoint, float radius, Point circlePointTwo, float radiusTwo){
+    float xdif = circlePoint.x - circlePointTwo.x;
+    float ydif = circlePoint.y - circlePointTwo.y;
+    
+    float distance = sqrt(xdif*xdif+ydif*ydif);
+    
+    if(distance <= radius+radiusTwo)
+        return true;
+    
+    return false;
+}
+
+
 void GameScene::menuCloseCallback(Ref* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)

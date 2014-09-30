@@ -24,7 +24,7 @@ class Unit;
 class Tower: public GameObject
 {
 public:
-    Tower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    Tower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~Tower();
     Tower* initTower(TOWER_TYPE _towerType);
     virtual void attack(float _attackRate) = 0;

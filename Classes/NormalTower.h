@@ -17,7 +17,7 @@ USING_NS_CC;
 class NormalTower : public AttackTower
 {
 public:
-    NormalTower(Layer* _gameLayer, Point position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    NormalTower(GameScene* _gameLayer, Point position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     NormalTower* initNormalTower();
     virtual ~NormalTower();
     void shootWeapon();

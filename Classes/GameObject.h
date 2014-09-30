@@ -10,6 +10,7 @@
 #define __Game__GameObject__
 
 #include "cocos2d.h"
+#include "GameScene.h"
 #include <iostream>
 
 USING_NS_CC;
@@ -25,8 +26,8 @@ enum ALLIANCE
 class GameObject : public Node
 {
 public:
-    GameObject(Layer* _gameLayer, Point position, ALLIANCE _allianceType);
-    GameObject* initGameObject(Layer* _gameLayer, Point position, ALLIANCE _allianceType);
+    GameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
+    GameObject* initGameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
     void setPosition(Point pos);
     Point getPosition();
     virtual ~GameObject();
@@ -48,7 +49,7 @@ public:
 
     Sprite* body;
     ALLIANCE eAllianceType;
-    Layer* gameLayer;
+    GameScene* gameLayer;
     Point position;
     
 };

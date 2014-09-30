@@ -17,7 +17,7 @@ USING_NS_CC;
 class NoneAttackTower : public Tower
 {
 public:
-    NoneAttackTower(Layer* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    NoneAttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~NoneAttackTower();
     NoneAttackTower* initNoneAttackTower();
     

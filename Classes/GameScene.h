@@ -13,8 +13,8 @@
 #define TILEWIDTH 64
 #define MAPWIDTH 15
 #include "cocos2d.h"
-#include "AttackTower.h"
-#include "Unit.h"
+//#include "AttackTower.h"
+//#include "Unit.h"
 #include <iostream>
 
 USING_NS_CC;
@@ -49,12 +49,20 @@ public:
     void update(float f);
     
     void summonEnemy(float f);
+    
+    void awardGold(int gold);
+    
+    bool circle(Point circlePoint, float radius, Point circlePointTwo, float radiusTwo);
+    
+    TMXTiledMap* map;
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 private:
-    TMXTiledMap* map;
-    std::list<Unit*> units;
-    std::list<Tower*> towers;
+    
+//    std::list<Unit*> units;
+//    std::list<Tower*> towers;
+    int player_gold;
+    Label* player_gold_label;
 };
 
 

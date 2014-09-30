@@ -8,7 +8,7 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(Layer* _gameLayer, Point _position, ALLIANCE _allianceType) : eAllianceType(_allianceType)
+GameObject::GameObject(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType) : eAllianceType(_allianceType)
 {
     this->initGameObject(_gameLayer, _position, _allianceType);
 }
@@ -18,7 +18,7 @@ GameObject::~GameObject()
     
 }
 
-GameObject* GameObject::initGameObject(Layer* _gameLayer, Point _position, ALLIANCE _allianceType)
+GameObject* GameObject::initGameObject(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType)
 {
     Node::onEnter();
     this->gameLayer = _gameLayer;

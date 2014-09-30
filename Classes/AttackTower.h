@@ -21,6 +21,9 @@ public :
     AttackTower* initAttackTower();
     virtual ~AttackTower();
     void setTarget(Unit* enermy);
+    virtual void damageEnermy();
+    virtual void targetKilled();
+    virtual void lostSightOfEnermy();
     
     float attackRate;
     float damage;

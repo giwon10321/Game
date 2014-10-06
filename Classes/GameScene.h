@@ -15,9 +15,10 @@
 #include "cocos2d.h"
 //#include "AttackTower.h"
 #include "Unit.h" //
-//#include "Tower.h"
+#include "Tower.h"
+#include "HudLayer.h"
 #include <iostream>
-#include "NormalTower.h"
+//#include "NormalTower.h"
 
 
 USING_NS_CC;
@@ -58,14 +59,19 @@ public:
     bool circle(Point circlePoint, float radius, Point circlePointTwo, float radiusTwo);
     
     TMXTiledMap* map;
+    
+    HudLayer* hudLayer;
+    
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 private:
     
     std::list<Unit*> units;
-    std::list<NormalTower*> towers;
+    std::list<Tower*> towers;
     int player_gold;
     Label* player_gold_label;
+    bool setupTower;
+    HudLayer* newLayer;
 };
 
 

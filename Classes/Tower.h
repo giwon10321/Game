@@ -11,7 +11,6 @@
 
 #include "cocos2d.h"
 #include "GameObject.h"
-
 USING_NS_CC;
 
 

@@ -12,7 +12,6 @@
 #ifndef __Game__GameScene__
 #include "cocos2d.h"
 #endif
-
 #include "AttackTower.h"
 
 USING_NS_CC;

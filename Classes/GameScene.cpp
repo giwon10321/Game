@@ -7,7 +7,7 @@
 //
 
 #include "GameScene.h"
-//#include "NormalTower.h"
+#include "NormalTower.h"
 
 Scene* GameScene::createScene()
 {
@@ -16,9 +16,14 @@ Scene* GameScene::createScene()
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
-    
-    // add layer as a child to scene
+        // add layer as a child to scene
     scene->addChild(layer);
+    
+    auto hudLayer = HudLayer::create();
+    hudLayer->setTag(100);
+    scene->addChild(hudLayer);
+    
+    
     
     // return the scene
     return scene;
@@ -75,11 +80,6 @@ bool GameScene::init()
     map = TMXTiledMap::create("test.tmx");
     map->setScale(1.5f);
     
-    auto point = PositionForTileCoord(Point(0,0));
-//    log("coord (0, 0) is (%f, %f)", point.x, point.y);
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 30);
-    label->setPosition(point.x, point.y);
     
     player_gold_label = Label::create();
     

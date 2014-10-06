@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01188B7E19E31439004DE624 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 01188B7D19E31439004DE624 /* button.png */; };
+		0123965F19DD6B7100056163 /* HudLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0123965D19DD6B7100056163 /* HudLayer.cpp */; };
 		0155F65B19BA07FD0084A7E8 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0155F65919BA07FD0084A7E8 /* GameObject.cpp */; };
 		0155F65F19BA07FD0084A7E8 /* isometric_grass_and_water.png in Resources */ = {isa = PBXBuildFile; fileRef = 0155F65E19BA07FD0084A7E8 /* isometric_grass_and_water.png */; };
 		0155F66119BA07FD0084A7E8 /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 0155F66019BA07FD0084A7E8 /* test.tmx */; };
@@ -229,6 +231,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01188B7D19E31439004DE624 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		0123965D19DD6B7100056163 /* HudLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HudLayer.cpp; path = ../Classes/HudLayer.cpp; sourceTree = "<group>"; };
+		0123965E19DD6B7100056163 /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = ../Classes/HudLayer.h; sourceTree = "<group>"; };
 		0155F65919BA07FD0084A7E8 /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = ../Classes/GameObject.cpp; sourceTree = "<group>"; };
 		0155F65A19BA07FD0084A7E8 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = ../Classes/GameObject.h; sourceTree = "<group>"; };
 		0155F65E19BA07FD0084A7E8 /* isometric_grass_and_water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isometric_grass_and_water.png; sourceTree = "<group>"; };
@@ -390,6 +395,8 @@
 				FE4AF5D419B9AA0000A9E581 /* NormalTower.h */,
 				FE4AF5D919B9AA7D00A9E581 /* Unit.cpp */,
 				FE4AF5DA19B9AA7D00A9E581 /* Unit.h */,
+				0123965D19DD6B7100056163 /* HudLayer.cpp */,
+				0123965E19DD6B7100056163 /* HudLayer.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -505,6 +512,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01188B7D19E31439004DE624 /* button.png */,
 				FE4AF5DC19B9ADFB00A9E581 /* arrow.png */,
 				0155F66819BA07FD0084A7E8 /* blue_tile.png */,
 				0155F66919BA07FD0084A7E8 /* gray_tile.png */,
@@ -706,6 +714,7 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				01188B7E19E31439004DE624 /* button.png in Resources */,
 				0155F66119BA07FD0084A7E8 /* test.tmx in Resources */,
 				FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -739,6 +748,7 @@
 				FE4AF5BE19B8CEBA00A9E581 /* AttackTower.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FE4AF5BB19B8CE5500A9E581 /* Tower.cpp in Sources */,
+				0123965F19DD6B7100056163 /* HudLayer.cpp in Sources */,
 				FE4AF5DB19B9AA7D00A9E581 /* Unit.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

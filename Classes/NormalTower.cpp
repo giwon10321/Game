@@ -6,8 +6,8 @@
 //
 //
 
-#include "NormalTower.h"
 #include "GameScene.h"
+#include "NormalTower.h"
 
 NormalTower::NormalTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, _position, _allianceType, _towerType)
 {
@@ -51,5 +51,5 @@ void NormalTower::shootWeapon()
 
 void NormalTower::update(float delta)
 {
-    log("test");
+   // log("test");
 }

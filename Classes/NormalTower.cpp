@@ -55,5 +55,7 @@ void NormalTower::shootWeapon(float _attackRate)
 
 void NormalTower::update(float delta)
 {
+<<<<<<< HEAD
 //    log("test");
+=======
 }

@@ -95,6 +95,8 @@ bool GameScene::init()
 
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
+//    normalTower->attack();
+    normalTower->shootWeapon(1.0f);
     towers.push_front(normalTower);
    // map->addChild(normalTower->body,4);
 

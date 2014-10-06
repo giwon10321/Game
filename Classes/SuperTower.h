@@ -21,7 +21,7 @@ public:
     virtual ~SuperTower();
     SuperTower* initSuperTower();
     void update(float delta);
-    void attack(float _attackRate);
+    void attack();
     
     int MP;
 };

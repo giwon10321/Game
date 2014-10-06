@@ -39,17 +39,21 @@ NormalTower* NormalTower::initNormalTower()
     return this;
 }
 
-void NormalTower::attack(float _attackRate)
+void NormalTower::attack()
 {
-    
+    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
 }
 
-void NormalTower::shootWeapon()
+void NormalTower::shootWeapon(float _attackRate)
 {
-    this->schedule(schedule_selector(NormalTower::attack), this->attackRate);
+    Sprite* weapon = this->weapon;
+    weapon->setPosition(this->getPosition());
+    this->gameLayer->map->addChild(weapon,100);
+//    this->weapon->runAction(Sequence::create(MoveTo::create(1.0f, target->getPosition()), NULL));
+//    this->weapon->runAction(Sequence::create(MoveTo::create(1.0f, Point(1000.0f,1000.0f)), NULL));
 }
 
 void NormalTower::update(float delta)
 {
-    log("test");
+//    log("test");
 }

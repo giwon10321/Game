@@ -27,7 +27,8 @@ public:
     Tower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~Tower();
     Tower* initTower(TOWER_TYPE _towerType);
-    virtual void attack(float _attackRate) = 0;
+    virtual void attack() = 0;
+    virtual void shootWeapon(float _attackRate) = 0;
     void release();
     
     TOWER_TYPE eTowerType;

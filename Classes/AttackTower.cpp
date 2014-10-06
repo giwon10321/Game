@@ -28,7 +28,7 @@ void AttackTower::setTarget(Unit *enermy)
 {
     this->target = nullptr;
     this->target = enermy;
-    this->attack(this->attackRate);
+    this->attack();
 }
 
 void AttackTower::damageEnermy()
@@ -41,7 +41,7 @@ void AttackTower::targetKilled()
     if(this->target != nullptr){
         this->target = nullptr;
     }
-    this->unschedule(schedule_selector(Tower::attack));
+    this->unschedule(schedule_selector(Tower::shootWeapon));
 }
 
 void AttackTower::lostSightOfEnermy()

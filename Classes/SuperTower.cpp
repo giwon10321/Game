@@ -27,7 +27,7 @@ void SuperTower::update(float delta)
     
 }
 
-void SuperTower::attack(float _attackRate)
+void SuperTower::attack()
 {
     
 }

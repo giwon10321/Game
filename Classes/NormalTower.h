@@ -23,8 +23,8 @@ public:
     NormalTower(GameScene* _gameLayer, Point position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     NormalTower* initNormalTower();
     virtual ~NormalTower();
-    void shootWeapon();
-    void attack(float _attackRate);
+    void attack();
+    void shootWeapon(float _attackRate);
     void update(float delta);
 };
 

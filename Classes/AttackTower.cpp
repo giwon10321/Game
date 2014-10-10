@@ -33,7 +33,7 @@ void AttackTower::setTarget(Unit *enermy)
 
 void AttackTower::damageEnermy()
 {
-    this->target->gotDamaged(this->damage);
+    this->target->getDamaged(this->damage);
 }
 
 void AttackTower::targetKilled()
@@ -47,4 +47,10 @@ void AttackTower::targetKilled()
 void AttackTower::lostSightOfEnermy()
 {
     
+}
+
+void AttackTower::removeWeapon(Node* _weapon)
+{
+    auto weapon = (Sprite *)_weapon;
+    weapon->removeFromParentAndCleanup(true);
 }

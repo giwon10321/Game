@@ -23,8 +23,9 @@ public:
     Unit(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType);
     Unit* initUnit();
     virtual ~Unit();
-    void gotDamaged(float _damage);
+    void getDamaged(float _damage);
     void gotLostSight(Tower* tower);
+    void getRemoved();
     
     float maxHP;
     float currentHP;

@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Tower.h"
+#include <iostream>
 
 USING_NS_CC;
 
@@ -24,10 +25,12 @@ public :
     virtual void damageEnermy();
     virtual void targetKilled();
     virtual void lostSightOfEnermy();
+    void removeWeapon(Node* _weapon);
     
     float attackRate;
+    float attackSpeed;
     float damage;
-    Sprite* weapon;
+    std::string weaponName;
 };
 
 #endif /* defined(__Game__AttackTower__) */

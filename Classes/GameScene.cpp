@@ -93,13 +93,13 @@ bool GameScene::init()
     //    map->addChild(label, 3 );
     
 
+    auto unit = new Unit(this,PositionForTileCoord(Point(9,6)),TYPE1);
+    units.push_front(unit);
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
-//    normalTower->attack();
-    normalTower->shootWeapon(1.0f);
+    normalTower->target = unit;
+    normalTower->attack();
     towers.push_front(normalTower);
-   // map->addChild(normalTower->body,4);
-
     
     auto paraNode = ParallaxNode::create();
     

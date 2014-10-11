@@ -64,7 +64,6 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
-private:
     
     std::list<Unit*> units;
     std::list<Tower*> towers;

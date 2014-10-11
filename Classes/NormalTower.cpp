@@ -23,11 +23,12 @@ NormalTower* NormalTower::initNormalTower()
 {
     this->body = Sprite::create("tower.png");
     this->body->setPosition(this->position);
-    this->weapon = Sprite::create("arrow.png");
+    this->weaponName = "arrow.png";
     this->maxHP = 100.0f;
     this->currentHP = 100.0f;
     this->range = 60;
     this->attackRate = 1.0f;
+    this->attackSpeed = 1.0f;
     this->damage = 30.0f;
     
     this->addChild(this->body);
@@ -41,16 +42,31 @@ NormalTower* NormalTower::initNormalTower()
 
 void NormalTower::attack()
 {
-    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
+//    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
+    this->schedule(schedule_selector(NormalTower::shootWeapon), 0.5f);
 }
 
 void NormalTower::shootWeapon(float _attackRate)
 {
-    Sprite* weapon = this->weapon;
-    weapon->setPosition(this->getPosition());
-    this->gameLayer->map->addChild(weapon,100);
-//    this->weapon->runAction(Sequence::create(MoveTo::create(1.0f, target->getPosition()), NULL));
-//    this->weapon->runAction(Sequence::create(MoveTo::create(1.0f, Point(1000.0f,1000.0f)), NULL));
+    if(this->target != nullptr){
+        Sprite* weapon = Sprite::create(this->weaponName);
+        Point towerPosition = this->getPosition();
+        Point destination = this->target->getPosition();
+        Point diff = destination-towerPosition;
+        
+        float angle = CC_RADIANS_TO_DEGREES(-1*diff.getAngle());
+        
+        weapon->Node::setRotation(angle);
+        weapon->setPosition(this->getPosition());
+        this->gameLayer->map->addChild(weapon,100);
+        
+        auto moveAction = MoveTo::create(this->attackSpeed,destination);
+        auto damageAction = CallFunc::create(CC_CALLBACK_0(AttackTower::damageEnermy, this));
+        auto removeAction = CallFuncN::create(CC_CALLBACK_1(AttackTower::removeObjects,this));
+        auto actionSequence = Sequence::create(damageAction, moveAction,removeAction, NULL);
+        
+        weapon->runAction(actionSequence);
+    }
 }
 
 void NormalTower::update(float delta)

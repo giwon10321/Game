@@ -11,9 +11,11 @@
 
 #include "cocos2d.h"
 #include <iostream>
+#include "cocos-ext.h"
 USING_NS_CC;
+USING_NS_CC_EXT;
 
-class HudLayer : public cocos2d::Layer
+class HudLayer : public cocos2d::Layer, public extension::ScrollViewDelegate
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -26,12 +28,23 @@ public:
     
     virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
+    void event(Ref* pSender);
     
+    void callBack(Ref* pSender);
+    
+    void scrollViewDidScroll(ScrollView* view);
+    
+    void scrollViewDidZoom(ScrollView* view);
+    
+    int score;
     // implement the "static create()" method manually
     CREATE_FUNC(HudLayer);
 private:
     cocos2d::Label* label;
-    Sprite* menuButton;
+    MenuItemImage* menuButton;
+    bool isInventory;
+    ScrollView* scrollView;
+    
     
     
     

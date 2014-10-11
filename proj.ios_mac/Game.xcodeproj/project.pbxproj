@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010E8BE619E534410096776D /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BE519E534410096776D /* button2.png */; };
+		010E8BED19E55DE80096776D /* inven1.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BE919E55DE80096776D /* inven1.png */; };
+		010E8BEE19E55DE80096776D /* inven2.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEA19E55DE80096776D /* inven2.png */; };
+		010E8BEF19E55DE80096776D /* shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEB19E55DE80096776D /* shop1.png */; };
+		010E8BF019E55DE80096776D /* shop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEC19E55DE80096776D /* shop2.png */; };
 		01188B7E19E31439004DE624 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 01188B7D19E31439004DE624 /* button.png */; };
 		0123965F19DD6B7100056163 /* HudLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0123965D19DD6B7100056163 /* HudLayer.cpp */; };
 		0155F65B19BA07FD0084A7E8 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0155F65919BA07FD0084A7E8 /* GameObject.cpp */; };
@@ -231,6 +236,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010E8BE519E534410096776D /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
+		010E8BE919E55DE80096776D /* inven1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inven1.png; sourceTree = "<group>"; };
+		010E8BEA19E55DE80096776D /* inven2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inven2.png; sourceTree = "<group>"; };
+		010E8BEB19E55DE80096776D /* shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop1.png; sourceTree = "<group>"; };
+		010E8BEC19E55DE80096776D /* shop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop2.png; sourceTree = "<group>"; };
 		01188B7D19E31439004DE624 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		0123965D19DD6B7100056163 /* HudLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HudLayer.cpp; path = ../Classes/HudLayer.cpp; sourceTree = "<group>"; };
 		0123965E19DD6B7100056163 /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = ../Classes/HudLayer.h; sourceTree = "<group>"; };
@@ -512,6 +522,11 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				010E8BE919E55DE80096776D /* inven1.png */,
+				010E8BEA19E55DE80096776D /* inven2.png */,
+				010E8BEB19E55DE80096776D /* shop1.png */,
+				010E8BEC19E55DE80096776D /* shop2.png */,
+				010E8BE519E534410096776D /* button2.png */,
 				01188B7D19E31439004DE624 /* button.png */,
 				FE4AF5DC19B9ADFB00A9E581 /* arrow.png */,
 				0155F66819BA07FD0084A7E8 /* blue_tile.png */,
@@ -693,14 +708,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010E8BEE19E55DE80096776D /* inven2.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				0155F66419BA07FD0084A7E8 /* Player.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				010E8BED19E55DE80096776D /* inven1.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				010E8BEF19E55DE80096776D /* shop1.png in Resources */,
 				FE4AF5C619B9991600A9E581 /* tower.png in Resources */,
 				0155F66519BA07FD0084A7E8 /* PlayerPower.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				010E8BE619E534410096776D /* button2.png in Resources */,
 				0155F66A19BA07FD0084A7E8 /* blue_tile.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -717,6 +736,7 @@
 				01188B7E19E31439004DE624 /* button.png in Resources */,
 				0155F66119BA07FD0084A7E8 /* test.tmx in Resources */,
 				FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */,
+				010E8BF019E55DE80096776D /* shop2.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				0155F65F19BA07FD0084A7E8 /* isometric_grass_and_water.png in Resources */,

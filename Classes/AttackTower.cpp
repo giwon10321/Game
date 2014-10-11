@@ -29,6 +29,14 @@ void AttackTower::setTarget(Unit *enermy)
     this->target = nullptr;
     this->target = enermy;
     this->attack();
+    enermy->getAttacked(this);
+}
+
+void AttackTower::unsetTarget()
+{
+    if(this->target != nullptr){
+        this->target = nullptr;
+    }
 }
 
 void AttackTower::damageEnermy()
@@ -36,21 +44,23 @@ void AttackTower::damageEnermy()
     this->target->getDamaged(this->damage);
 }
 
-void AttackTower::targetKilled()
+void AttackTower::stopShoot()
 {
+    this->unschedule(schedule_selector(Tower::shootWeapon));
+}
+
+void AttackTower::lostSightOfEnermy()
+{
+    this->target->gotLostSight(this);
     if(this->target != nullptr){
         this->target = nullptr;
     }
     this->unschedule(schedule_selector(Tower::shootWeapon));
 }
 
-void AttackTower::lostSightOfEnermy()
-{
-    
-}
-
-void AttackTower::removeWeapon(Node* _weapon)
+void AttackTower::removeObjects(Node* _weapon)
 {
     auto weapon = (Sprite *)_weapon;
     weapon->removeFromParentAndCleanup(true);
+    this->target->removeUnit(this->damage);
 }

@@ -22,10 +22,11 @@ public :
     AttackTower* initAttackTower();
     virtual ~AttackTower();
     void setTarget(Unit* enermy);
+    void unsetTarget();
     virtual void damageEnermy();
-    virtual void targetKilled();
+    virtual void stopShoot();
     virtual void lostSightOfEnermy();
-    void removeWeapon(Node* _weapon);
+    void removeObjects(Node* _weapon);
     
     float attackRate;
     float attackSpeed;

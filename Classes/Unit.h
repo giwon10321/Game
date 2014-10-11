@@ -23,12 +23,15 @@ public:
     Unit(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType);
     Unit* initUnit();
     virtual ~Unit();
+    void getAttacked(Tower* tower);
     void getDamaged(float _damage);
     void gotLostSight(Tower* tower);
-    void getRemoved();
+    void stopScheduled();
+    void removeUnit(float _damage);
     
     float maxHP;
     float currentHP;
+    float virtualHP;
     int range;
     Sprite* weapon;
     Tower* target;

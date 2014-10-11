@@ -97,7 +97,7 @@ bool GameScene::init()
     units.push_front(unit);
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
-    normalTower->target = unit;
+    normalTower->setTarget(unit);
     normalTower->attack();
     towers.push_front(normalTower);
     

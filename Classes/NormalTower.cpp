@@ -26,10 +26,11 @@ NormalTower* NormalTower::initNormalTower()
     this->weaponName = "arrow.png";
     this->maxHP = 100.0f;
     this->currentHP = 100.0f;
-    this->range = 60;
+    this->attackRange = 1000.0f;
     this->attackRate = 1.0f;
     this->attackSpeed = 1.0f;
     this->damage = 30.0f;
+    this->thisRadius = 30.0f;
     
     this->addChild(this->body);
 
@@ -42,11 +43,10 @@ NormalTower* NormalTower::initNormalTower()
 
 void NormalTower::attack()
 {
-//    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
     this->schedule(schedule_selector(NormalTower::shootWeapon), 0.5f);
 }
 
-void NormalTower::shootWeapon(float _attackRate)
+void NormalTower::shootWeapon(float attackRate)
 {
     if(this->target != nullptr){
         Sprite* weapon = Sprite::create(this->weaponName);
@@ -62,14 +62,10 @@ void NormalTower::shootWeapon(float _attackRate)
         
         auto moveAction = MoveTo::create(this->attackSpeed,destination);
         auto damageAction = CallFunc::create(CC_CALLBACK_0(AttackTower::damageEnermy, this));
-        auto removeAction = CallFuncN::create(CC_CALLBACK_1(AttackTower::removeObjects,this));
+        auto removeAction = CallFuncN::create(CC_CALLBACK_1(AttackTower::removeWeapon, this));
+        
         auto actionSequence = Sequence::create(damageAction, moveAction,removeAction, NULL);
         
         weapon->runAction(actionSequence);
     }
-}
-
-void NormalTower::update(float delta)
-{
-//    log("test");
 }

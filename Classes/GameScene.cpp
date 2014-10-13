@@ -93,13 +93,19 @@ bool GameScene::init()
     //    map->addChild(label, 3 );
     
 
-    auto unit = new Unit(this,PositionForTileCoord(Point(9,6)),TYPE1);
-    units.push_front(unit);
+    auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),TYPE1);
+    auto unit1 = new Unit(this,PositionForTileCoord(Point(20,12)),TYPE1);
+    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,20)),TYPE1);
+//    units.push_front(unit);
+    units.pushBack(unit);
+    units.pushBack(unit1);
+    units.pushBack(unit2);
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
-    normalTower->setTarget(unit);
-    normalTower->attack();
-    towers.push_front(normalTower);
+//    normalTower->setTarget(unit);
+//    normalTower->attack();
+    towers.pushBack(normalTower);
+//    towers.push_front(normalTower);
     
     auto paraNode = ParallaxNode::create();
     

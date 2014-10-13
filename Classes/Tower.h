@@ -25,17 +25,10 @@ class Tower: public GameObject
 public:
     Tower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     virtual ~Tower();
-    Tower* initTower(TOWER_TYPE _towerType);
-    virtual void attack() = 0;
-    virtual void shootWeapon(float _attackRate) = 0;
-    void release();
+    Tower* initTower(TOWER_TYPE towerType);
+    void removeObject(float damage);
     
     TOWER_TYPE eTowerType;
-    float maxHP;
-    float currentHP;
-    int range;
-    Unit* target;
-    list<Unit*> attackBy;
 };
 
 

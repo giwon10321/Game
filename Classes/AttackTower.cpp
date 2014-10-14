@@ -22,6 +22,7 @@ AttackTower::~AttackTower()
 
 AttackTower* AttackTower::initAttackTower()
 {
+    this->scheduleUpdate();
     return this;
 }
 

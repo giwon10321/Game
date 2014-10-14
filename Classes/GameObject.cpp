@@ -20,12 +20,13 @@ GameObject::~GameObject()
 
 GameObject* GameObject::initGameObject(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType)
 {
-    Node::onEnter();
+    this->onEnter();
     this->gameLayer = _gameLayer;
     this->eAllianceType = _allianceType;
-//    this->setPosition(_position);
     this->setPosition(_position);
-    unsetTarget();
+
+    this->unsetTarget();
+
     
     return this;
 }

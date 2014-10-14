@@ -30,29 +30,38 @@ class GameObject : public Node
 public:
     GameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
     GameObject* initGameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
-    void setPosition(Point pos);
-    Point getPosition();
     virtual ~GameObject();
     
-//    template <typename T> void getNearestObject(list<T*> &objects, T*& target){
-//        Point thisPosition = this->getPosition();
-//        
-//        float nearestDistance = -1.0f;
-//        typename list<T*>::iterator iterator;
-//        for(iterator = objects.begin(); iterator != objects.end(); ++iterator){
-//            float distance = thisPosition.getDistance(((GameObject*)(*iterator))->getPosition());
-//            if(nearestDistance == -1.0f || distance < nearestDistance){
-//                nearestDistance = distance;
-//                target = *iterator;
-//                cout<<target<<endl;
-//            }
-//        }
-//    }
-
+    void setPosition(Point pos);
+    Point getPosition();
+    bool checkCollision(Point destination, float targetRadius);
+    
+    virtual void setTarget(GameObject* obj);
+    virtual void unsetTarget();
+    virtual void getAttacked(GameObject* obj);
+    virtual void getDamaged(float damage);
+    virtual void gotLostSight(GameObject* obj);
+    virtual void removeWeapon(Node* weapon);
+    virtual void damageEnermy();
+    virtual void stopShoot();
+    virtual void stopScheduled();
+    
+    virtual void removeObject(float damage) = 0;
+    virtual void shootWeapon(float attackRate) = 0;
+    virtual void attack() = 0;
+    
     Sprite* body;
     ALLIANCE eAllianceType;
     GameScene* gameLayer;
-    Point position;
+    GameObject* target;
+    Vector<GameObject *> attackBy;
     
+    Point position;
+    int attackRange;
+    float damage;
+    float thisRadius;
+    float maxHP;
+    float currentHP;
+    float virtualHP;
 };
 #endif /* defined(__Game__GameObject__) */

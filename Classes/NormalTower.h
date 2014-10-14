@@ -23,8 +23,7 @@ public:
     NormalTower* initNormalTower();
     virtual ~NormalTower();
     void attack();
-    void shootWeapon(float _attackRate);
-    void update(float delta);
+    void shootWeapon(float attackRate);
 };
 
 #endif /* defined(__Game__NormalTower__) */

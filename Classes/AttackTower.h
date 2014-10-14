@@ -21,16 +21,10 @@ public :
     AttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
     AttackTower* initAttackTower();
     virtual ~AttackTower();
-    void setTarget(Unit* enermy);
-    void unsetTarget();
-    virtual void damageEnermy();
-    virtual void stopShoot();
-    virtual void lostSightOfEnermy();
-    void removeObjects(Node* _weapon);
+    void update(float delta);
     
     float attackRate;
     float attackSpeed;
-    float damage;
     std::string weaponName;
 };
 

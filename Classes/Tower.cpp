@@ -18,7 +18,14 @@ Tower::~Tower()
     
 }
 
-Tower* Tower::initTower(TOWER_TYPE _towerType){
-    this->eTowerType = _towerType;
+Tower* Tower::initTower(TOWER_TYPE towerType){
+    this->eTowerType = towerType;
     return this;
+}
+
+void Tower::removeObject(float damage)
+{
+    if(this != nullptr){
+        
+    }
 }

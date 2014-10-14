@@ -65,8 +65,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     
-    std::list<Unit*> units;
-    std::list<Tower*> towers;
+    Vector<Unit*> units;
+    Vector<Tower*> towers;
     int player_gold;
     Label* player_gold_label;
     bool setupTower;

@@ -28,7 +28,7 @@ Unit* Unit::initUnit()
     this->maxHP = 100.0f;
     this->currentHP = this->maxHP;
     this->virtualHP = this->maxHP;
-    this->range = 100;
+    this->thisRadius = 10.0f;
     
     this->addChild(this->body);
     this->gameLayer->map->addChild(this, 101);
@@ -36,43 +36,27 @@ Unit* Unit::initUnit()
     return this;
 }
 
-void Unit::getAttacked(Tower* tower)
+void Unit::removeObject(float damage)
 {
-    this->attackBy.push_front(tower);
-}
-
-void Unit::getDamaged(float _damage)
-{
-    this->virtualHP -= _damage;
-    if(this->virtualHP <= 0 ){
-        this->stopScheduled();
+    if(this != nullptr){
+        this->currentHP -= damage;
+        if(this->currentHP <= 0.0f){
+            for(auto tower : this->gameLayer->towers){
+                ((AttackTower *)tower)->unsetTarget();
+            }
+            this->gameLayer->units.eraseObject(this);
+            this->removeFromParentAndCleanup(true);
+        }
     }
 }
 
-void Unit::gotLostSight(Tower* tower)
+void Unit::shootWeapon(float attackRate)
 {
     
 }
 
-void Unit::stopScheduled()
+void Unit::attack()
 {
-    list<Tower*>::iterator iterator;
-    for(iterator = this->attackBy.begin(); iterator != this->attackBy.end(); ++iterator ){
-        ((AttackTower* )*iterator)->stopShoot();
-    }
-}
-
-void Unit::removeUnit(float _damage)
-{
-    this->currentHP -= _damage;
-    if(this->currentHP <= 0.0f){
-//        log("test");
-        list<Tower*>::iterator iterator;
-        for(iterator = this->attackBy.begin(); iterator != this->attackBy.end(); ++iterator ){
-            ((AttackTower* )*iterator)->unsetTarget();
-        }
-        this->gameLayer->units.remove(this);
-        this->removeFromParentAndCleanup(true);
-    }
+    
 }
 

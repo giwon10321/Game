@@ -23,7 +23,7 @@ NormalTower* NormalTower::initNormalTower()
 {
     this->body = Sprite::create("tower.png");
     this->weaponName = "arrow.png";
-    this->maxHP = 100.0f;
+    this->maxHP = 1000.0f;
     this->currentHP = this->maxHP;
     this->virtualHP = this->maxHP;
     this->attackRange = 200.0f;
@@ -35,8 +35,6 @@ NormalTower* NormalTower::initNormalTower()
     this->addChild(this->body);
 
     this->gameLayer->map->addChild(this, 99);
-    
-    this->scheduleUpdate();
     
     return this;
 }

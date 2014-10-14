@@ -31,12 +31,16 @@ Unit* Unit::initUnit()
     this->thisRadius = 10.0f;
     this->attackRange = 50.0f;
     this->attackRate = 0.5f;
+    this->attackSpeed = 0.1f;
     this->movementSpeed = 30.0f;
+    this->damage = 30.0f;
     
     this->addChild(this->body);
     this->gameLayer->map->addChild(this, 101);
     
     this->moveToDestination(this->gameLayer->PositionForTileCoord(Point(6,6)));
+    
+    this->scheduleUpdate();
     
     return this;
 }
@@ -46,7 +50,7 @@ void Unit::removeObject(float damage)
     if(this != nullptr){
         this->currentHP -= damage;
         if(this->currentHP <= 0.0f){
-            for(auto tower : this->gameLayer->towers){
+            for(auto tower : this->attackBy){
                 ((AttackTower *)tower)->unsetTarget();
             }
             this->gameLayer->units.eraseObject(this);
@@ -62,6 +66,10 @@ void Unit::shootWeapon(float attackRate)
         Point unitPosition = this->getPosition();
         Point destination = this->target->getPosition();
         Point diff = destination-unitPosition;
+        
+        float angle = CC_RADIANS_TO_DEGREES(-1*diff.getAngle());
+        
+        weapon->setRotation(angle);
         
         weapon->setPosition(this->getPosition());
         this->gameLayer->map->addChild(weapon,100);
@@ -83,6 +91,7 @@ void Unit::attack()
 void Unit::update(float delta)
 {
     if(this->target != nullptr){
+        
     }else{
         for(auto tower : this->gameLayer->towers){
             if(this->checkCollision(tower->getPosition(), tower->thisRadius)){

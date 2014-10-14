@@ -22,10 +22,6 @@ public :
     AttackTower* initAttackTower();
     virtual ~AttackTower();
     void update(float delta);
-    
-    float attackRate;
-    float attackSpeed;
-    std::string weaponName;
 };
 
 #endif /* defined(__Game__AttackTower__) */

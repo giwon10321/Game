@@ -89,23 +89,17 @@ bool GameScene::init()
     player_gold_label->setString(buf);
     player_gold_label->setPosition(Vec2(origin.x + visibleSize.width - player_gold_label->getContentSize().width/2 ,                                        origin.y + visibleSize.height - player_gold_label->getContentSize().height/2));
     this->addChild(player_gold_label, 10);
-    
-    //    map->addChild(label, 3 );
-    
 
     auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),TYPE1);
-    auto unit1 = new Unit(this,PositionForTileCoord(Point(20,12)),TYPE1);
-    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,20)),TYPE1);
-//    units.push_front(unit);
+    auto unit1 = new Unit(this,PositionForTileCoord(Point(1,12)),TYPE1);
+    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,1)),TYPE1);
+
     units.pushBack(unit);
     units.pushBack(unit1);
     units.pushBack(unit2);
     
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
-//    normalTower->setTarget(unit);
-//    normalTower->attack();
     towers.pushBack(normalTower);
-//    towers.push_front(normalTower);
     
     auto paraNode = ParallaxNode::create();
     

@@ -22,20 +22,11 @@ GameObject* GameObject::initGameObject(GameScene* _gameLayer, Point _position, A
 {
     Node::onEnter();
     this->gameLayer = _gameLayer;
-    this->position = _position;
     this->eAllianceType = _allianceType;
+//    this->setPosition(_position);
+    this->setPosition(_position);
     
     return this;
-}
-
-void GameObject::setPosition(Point pos)
-{
-    body->setPosition(pos);
-}
-
-Point GameObject::getPosition()
-{
-    return body->getPosition();
 }
 
 bool GameObject::checkCollision(Point destination, float targetRadius)

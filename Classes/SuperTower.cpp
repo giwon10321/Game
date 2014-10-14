@@ -8,7 +8,7 @@
 
 #include "SuperTower.h"
 
-SuperTower::SuperTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, position, _allianceType, _towerType)
+SuperTower::SuperTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, _position, _allianceType, _towerType)
 {
     this->initSuperTower();
 }

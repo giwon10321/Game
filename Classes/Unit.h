@@ -26,6 +26,9 @@ public:
     void removeObject(float damage);
     void shootWeapon(float attackRate);
     void attack();
+    void update(float delta);
+    
+    virtual void moveToDestination(Point destination);
     
     float movementSpeed;
 };

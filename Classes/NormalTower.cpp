@@ -22,13 +22,13 @@ NormalTower::~NormalTower()
 NormalTower* NormalTower::initNormalTower()
 {
     this->body = Sprite::create("tower.png");
-    this->body->setPosition(this->position);
     this->weaponName = "arrow.png";
     this->maxHP = 100.0f;
-    this->currentHP = 100.0f;
-    this->attackRange = 1000.0f;
-    this->attackRate = 1.0f;
-    this->attackSpeed = 1.0f;
+    this->currentHP = this->maxHP;
+    this->virtualHP = this->maxHP;
+    this->attackRange = 200.0f;
+    this->attackRate = 0.5f;
+    this->attackSpeed = 0.2f;
     this->damage = 30.0f;
     this->thisRadius = 30.0f;
     
@@ -43,7 +43,7 @@ NormalTower* NormalTower::initNormalTower()
 
 void NormalTower::attack()
 {
-    this->schedule(schedule_selector(NormalTower::shootWeapon), 0.5f);
+    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
 }
 
 void NormalTower::shootWeapon(float attackRate)
@@ -56,7 +56,7 @@ void NormalTower::shootWeapon(float attackRate)
         
         float angle = CC_RADIANS_TO_DEGREES(-1*diff.getAngle());
         
-        weapon->Node::setRotation(angle);
+        weapon->setRotation(angle);
         weapon->setPosition(this->getPosition());
         this->gameLayer->map->addChild(weapon,100);
         

@@ -31,9 +31,6 @@ public:
     GameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
     GameObject* initGameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
     virtual ~GameObject();
-    
-    void setPosition(Point pos);
-    Point getPosition();
     bool checkCollision(Point destination, float targetRadius);
     
     virtual void setTarget(GameObject* obj);
@@ -55,13 +52,15 @@ public:
     GameScene* gameLayer;
     GameObject* target;
     Vector<GameObject *> attackBy;
-    
-    Point position;
+
     int attackRange;
     float damage;
     float thisRadius;
     float maxHP;
     float currentHP;
     float virtualHP;
+    float attackRate;
+    float attackSpeed;
+    std::string weaponName;
 };
 #endif /* defined(__Game__GameObject__) */

@@ -25,6 +25,7 @@ GameObject* GameObject::initGameObject(GameScene* _gameLayer, Point _position, A
     this->eAllianceType = _allianceType;
 //    this->setPosition(_position);
     this->setPosition(_position);
+    unsetTarget();
     
     return this;
 }
@@ -40,6 +41,7 @@ bool GameObject::checkCollision(Point destination, float targetRadius)
 
 void GameObject::setTarget(GameObject *obj)
 {
+    log("setTarget");
     this->target = nullptr;
     this->target = obj;
     this->attack();

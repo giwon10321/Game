@@ -28,9 +28,9 @@ AttackTower* AttackTower::initAttackTower()
 void AttackTower::update(float delta)
 {
     if(this->target != nullptr){
-//        log("not null");
+ //       log("not null");
     }else{
-//        log("null");
+        log("null");
         for(auto enermy : this->gameLayer->units){
             if(this->checkCollision(enermy->getPosition(), enermy->thisRadius)){
                 this->setTarget(enermy);

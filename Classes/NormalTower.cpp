@@ -43,6 +43,7 @@ NormalTower* NormalTower::initNormalTower()
 
 void NormalTower::attack()
 {
+    log("attack");
     this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
 }
 

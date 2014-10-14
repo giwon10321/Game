@@ -25,7 +25,7 @@ Unit* Unit::initUnit()
 {
     this->body = Sprite::create("Player.png");
     this->weaponName = "arrow.png";
-    this->maxHP = 10000.0f;
+    this->maxHP = 100.0f;
     this->currentHP = this->maxHP;
     this->virtualHP = this->maxHP;
     this->thisRadius = 10.0f;

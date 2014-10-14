@@ -43,7 +43,12 @@ private:
     cocos2d::Label* label;
     MenuItemImage* menuButton;
     bool isInventory;
-    ScrollView* scrollView;
+    ScrollView* scrollView1;
+    ScrollView* scrollView2;
+    LayerColor* window;
+    LayerColor* tab1;
+    LayerColor* tab2;
+    
     
     
     

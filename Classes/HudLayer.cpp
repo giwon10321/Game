@@ -51,49 +51,73 @@ void HudLayer::event(Ref* pSender)
   //  log("clicked");
     if(isInventory == false)
     {
-        
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
+        
+        window = LayerColor::create(Color4B(255, 0, 255, 0));
+        window->setContentSize(Size(visibleSize.width/4*3, visibleSize.height/4*3));
+        window->setPosition(140, 80);
+    
+        //auto rect = Rect(visibleSize.width/4*3-100, visibleSize.height/4*3-50, 100, 50);
+        
+        tab1 = LayerColor::create(Color4B(255, 255, 0, 255));
+        tab1->setContentSize(Size(100, 50));
+        tab1->setPosition(1, visibleSize.height/4*3-50);
+        window->addChild(tab1);
+        
+        tab2 = LayerColor::create(Color4B(0, 255, 255, 255));
+        tab2->setContentSize(Size(100, 50));
+        tab2->setPosition(101, visibleSize.height/4*3-50);
+        window->addChild(tab2);
+        
 
-        auto label = Label::create();
-        label->setString("abcss");
-        label->setColor(Color3B(255, 0, 0));
-        label->setSystemFontSize(40.0);
-        
-        auto menuItem = MenuItemLabel::create(label);
-        
-        auto menuItem2 = MenuItemImage::create("shop1.png", "shop2.png", CC_CALLBACK_1(HudLayer::callBack, this));
-        
-        
         auto menu = Menu::create();
-        menu->addChild(menuItem2);
 
+        for(int i=0;i<6;i++)
+        {
+            auto menuItem2 = MenuItemImage::create("shop1.png", "shop2.png", CC_CALLBACK_1(HudLayer::callBack, this));
+            menuItem2->setPositionX(i*150-300);
+            
+            menu->addChild(menuItem2);
+        }
         menu->setPosition(Vec2(400, 150));
         
         _touchListener->setSwallowTouches(true);
         auto container = LayerColor::create(Color4B(255, 255, 0, 255));
         container->setPosition(Vec2::ZERO);
-        container->setContentSize(visibleSize);
-        container->setVisible(true);
+        container->setContentSize(Size(800, 300));
         container->addChild(menu);
         
-        scrollView = ScrollView::create(Size(800, 300), container);
-        scrollView->setTag(4);
-        scrollView->retain();
-        scrollView->setBounceable(false);
-        scrollView->setDirection(ScrollView::Direction::HORIZONTAL);
-        scrollView->setPosition(200, 200);
-        scrollView->setContentSize(Size(1000, 300));
-        scrollView->setDelegate(this);
-        this->addChild(scrollView, 5);
+        scrollView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container);
+        scrollView1->setBounceable(false);
+        scrollView1->setDirection(ScrollView::Direction::HORIZONTAL);
+        scrollView1->setPosition(0, 0);
+        scrollView1->setContentSize(Size(visibleSize.width/4*3+200, visibleSize.height/4*3-50));
+        scrollView1->setDelegate(this);
+        window->addChild(scrollView1, 5);
         
-            
+        auto container2 = LayerColor::create(Color4B(0, 255, 255, 255));
+        container2->setPosition(Vec2::ZERO);
+        container2->setContentSize(Size(800, 300));
+    //    container2->addChild(menu);
+        
+        scrollView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container2);
+        scrollView2->setBounceable(false);
+        scrollView2->setDirection(ScrollView::Direction::HORIZONTAL);
+        scrollView2->setPosition(0, 0);
+        scrollView2->setContentSize(Size(visibleSize.width/4*3+200, visibleSize.height/4*3-50));
+        scrollView2->setDelegate(this);
+        window->addChild(scrollView2, 4);
+        this->addChild(window);
+        
         isInventory = true;
     }
     else
     {
        // auto scrollView = getChildByTag(4);
-        scrollView->removeFromParent();
+       // scrollView->removeFromParent();
+        window->removeFromParent();
+
         _touchListener->setSwallowTouches(false);
 
         isInventory = false;
@@ -111,17 +135,37 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     {
         
      //   auto scrollView = getChildByTag(4);
-        auto range = scrollView->getBoundingBox();
+     //   auto range = scrollView->getBoundingBox();
+        auto range = window->getBoundingBox();
+
         if(!range.containsPoint(touchPoint))
         {
-            scrollView->removeFromParent();
+//            scrollView->removeFromParent();
+            log("bye");
+            window->removeFromParent();
             _touchListener->setSwallowTouches(false);
             isInventory = false;
-
+            return true;
 
         }
-        
-        
+        range = tab1->getBoundingBox();
+        log("tab1 position: %f, %f", tab1->getPositionX(), tab2->getPositionY());
+        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        if(range.containsPoint(touchPoint))
+        {
+            log("yellow touched");
+            scrollView1->setVisible(true);
+            scrollView2->setVisible(false);
+        }
+        range = tab2->getBoundingBox();
+        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        if(range.containsPoint(touchPoint))
+        {
+            log("cyan touched");
+            scrollView1->setVisible(false);
+            scrollView2->setVisible(true);
+            
+        }
     }
     //    prevPt = touchPoint;
     //    auto para = (ParallaxNode*)getChildByTag(10);

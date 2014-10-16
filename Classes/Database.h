@@ -11,15 +11,10 @@
 
 #include "cocos2d.h"
 #include <iostream>
-
-#include "KompexSQLitePrerequisites.h"
-#include "KompexSQLiteDatabase.h"
-#include "KompexSQLiteStatement.h"
-#include "KompexSQLiteException.h"
-#include "KompexSQLiteStreamRedirection.h"
-#include "KompexSQLiteBlob.h"
+#include "jsoncpp/json/json.h"
 
 USING_NS_CC;
+using namespace std;
 
 class Database
 {

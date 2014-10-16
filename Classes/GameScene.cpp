@@ -40,8 +40,6 @@ bool GameScene::init()
         return false;
     }
     
-    Database* db = new Database();
-    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     

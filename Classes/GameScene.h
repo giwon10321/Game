@@ -13,13 +13,10 @@
 #define TILEWIDTH 64
 #define MAPWIDTH 15
 #include "cocos2d.h"
-//#include "AttackTower.h"
-#include "Unit.h" //
+#include "Unit.h"
 #include "Tower.h"
 #include "HudLayer.h"
 #include <iostream>
-//#include "NormalTower.h"
-
 
 USING_NS_CC;
 using namespace std;

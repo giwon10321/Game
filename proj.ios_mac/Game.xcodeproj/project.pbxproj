@@ -12,6 +12,7 @@
 		010E8BEE19E55DE80096776D /* inven2.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEA19E55DE80096776D /* inven2.png */; };
 		010E8BEF19E55DE80096776D /* shop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEB19E55DE80096776D /* shop1.png */; };
 		010E8BF019E55DE80096776D /* shop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8BEC19E55DE80096776D /* shop2.png */; };
+		0111FB0419EE4C870079F773 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 0111FB0319EE4C870079F773 /* box.png */; };
 		01188B7E19E31439004DE624 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 01188B7D19E31439004DE624 /* button.png */; };
 		0123965F19DD6B7100056163 /* HudLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0123965D19DD6B7100056163 /* HudLayer.cpp */; };
 		0155F65B19BA07FD0084A7E8 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0155F65919BA07FD0084A7E8 /* GameObject.cpp */; };
@@ -241,6 +242,7 @@
 		010E8BEA19E55DE80096776D /* inven2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inven2.png; sourceTree = "<group>"; };
 		010E8BEB19E55DE80096776D /* shop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop1.png; sourceTree = "<group>"; };
 		010E8BEC19E55DE80096776D /* shop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop2.png; sourceTree = "<group>"; };
+		0111FB0319EE4C870079F773 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		01188B7D19E31439004DE624 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		0123965D19DD6B7100056163 /* HudLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HudLayer.cpp; path = ../Classes/HudLayer.cpp; sourceTree = "<group>"; };
 		0123965E19DD6B7100056163 /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HudLayer.h; path = ../Classes/HudLayer.h; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0111FB0319EE4C870079F773 /* box.png */,
 				010E8BE919E55DE80096776D /* inven1.png */,
 				010E8BEA19E55DE80096776D /* inven2.png */,
 				010E8BEB19E55DE80096776D /* shop1.png */,
@@ -731,6 +734,7 @@
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				0111FB0419EE4C870079F773 /* box.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				01188B7E19E31439004DE624 /* button.png in Resources */,

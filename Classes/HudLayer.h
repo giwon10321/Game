@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include <iostream>
 #include "cocos-ext.h"
+#include "sqlite3.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -43,6 +44,7 @@ private:
     cocos2d::Label* label;
     MenuItemImage* menuButton;
     bool isInventory;
+    bool isShop;
     ScrollView* scrollView1;
     ScrollView* scrollView2;
     LayerColor* window;

@@ -10,7 +10,6 @@
 #define __Game__GameObject__
 
 #include "cocos2d.h"
-//#include "GameScene.h"
 #include <iostream>
 
 USING_NS_CC;

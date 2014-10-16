@@ -42,7 +42,6 @@ bool GameObject::checkCollision(Point destination, float targetRadius)
 
 void GameObject::setTarget(GameObject *obj)
 {
-    log("setTarget");
     this->target = nullptr;
     this->target = obj;
     this->attack();

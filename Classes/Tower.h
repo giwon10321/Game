@@ -13,22 +13,15 @@
 #include "GameObject.h"
 USING_NS_CC;
 
-
-enum TOWER_TYPE{
-    ARROW_NOMARL = 0,
-    DETECTING_NORMAL
-};
-
 class Unit;
 class Tower: public GameObject
 {
 public:
-    Tower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    Tower(GameScene* gameLayer, Point position, Json::Value info);
     virtual ~Tower();
-    Tower* initTower(TOWER_TYPE towerType);
+    Tower* initTower();
     void removeObject(float damage);
-    
-    TOWER_TYPE eTowerType;
+	void saveToInventory();
 };
 
 

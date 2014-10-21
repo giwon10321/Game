@@ -6,12 +6,12 @@
 //
 //
 
-#include "GameScene.h"
 #include "Unit.h"
+#include "GameScene.h"
 #include "Tower.h"
 #include "AttackTower.h"
 
-Unit::Unit(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType):GameObject(_gameLayer, _position, _allianceType)
+Unit::Unit(GameScene* gameLayer, Point position, Json::Value info):GameObject(gameLayer, position, info)
 {
     this->initUnit();
 }
@@ -23,17 +23,16 @@ Unit::~Unit()
 
 Unit* Unit::initUnit()
 {
-    this->body = Sprite::create("Player.png");
-    this->weaponName = "arrow.png";
-    this->maxHP = 1000.0f;
-    this->currentHP = this->maxHP;
-    this->virtualHP = this->maxHP;
-    this->thisRadius = 10.0f;
-    this->attackRange = 50.0f;
-    this->attackRate = 0.5f;
-    this->attackSpeed = 0.1f;
-    this->movementSpeed = 30.0f;
-    this->damage = 30.0f;
+    this->body = Sprite::create(info["unitImageName"].asString());
+    this->weaponName = info["weaponImageName"].asString();
+    this->currentHP = info["maxHP"].asFloat();
+    this->virtualHP = info["maxHP"].asFloat();
+    this->thisRadius = info["radius"].asFloat();
+    this->attackRange = info["attackRange"].asFloat();
+    this->attackRatio = info["attackRatio"].asFloat();
+    this->attackSpeed = info["attackSpeed"].asFloat();
+    this->movementSpeed = info["moveSpeed"].asFloat();
+    this->damage = info["damage"].asFloat();
     
     this->addChild(this->body);
     this->gameLayer->map->addChild(this, 101);
@@ -59,7 +58,7 @@ void Unit::removeObject(float damage)
     }
 }
 
-void Unit::shootWeapon(float attackRate)
+void Unit::shootWeapon(float attackRatio)
 {
     if(this->target != nullptr){
         Sprite* weapon = Sprite::create(this->weaponName);
@@ -73,8 +72,10 @@ void Unit::shootWeapon(float attackRate)
         
         weapon->setPosition(this->getPosition());
         this->gameLayer->map->addChild(weapon,100);
-        
-        auto moveAction = MoveTo::create(this->attackSpeed,destination);
+		
+		float time = unitPosition.getDistance(destination)/this->attackSpeed;
+		
+        auto moveAction = MoveTo::create(time,destination);
         auto damageAction = CallFunc::create(CC_CALLBACK_0(Unit::damageEnermy, this));
         auto removeAction = CallFuncN::create(CC_CALLBACK_1(Unit::removeWeapon, this));
         auto actionSequence = Sequence::create(damageAction, moveAction,removeAction, NULL);
@@ -85,7 +86,7 @@ void Unit::shootWeapon(float attackRate)
 
 void Unit::attack()
 {
-    this->schedule(schedule_selector(Unit::shootWeapon), this->attackRate);
+    this->schedule(schedule_selector(Unit::shootWeapon), this->attackRatio);
 }
 
 void Unit::update(float delta)
@@ -105,7 +106,8 @@ void Unit::update(float delta)
 
 void Unit::moveToDestination(Point destination)
 {
-    auto moveAction = MoveTo::create(10.0f,destination);
+	float time = this->getPosition().getDistance(destination) / this->movementSpeed;
+    auto moveAction = MoveTo::create(time,destination);
     moveAction->setTag(999);
     this->runAction(moveAction);
 }

@@ -11,24 +11,18 @@
 
 #include "cocos2d.h"
 #include <iostream>
+#include "Database.h"
 
 USING_NS_CC;
 using namespace std;
 
 
 class GameScene;
-enum ALLIANCE
-{
-    TYPE1 = 0,
-    TYPE2,
-    TYPE3
-};
-
 class GameObject : public Node
 {
 public:
-    GameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
-    GameObject* initGameObject(GameScene* _gameLayer, Point position, ALLIANCE _allianceType);
+    GameObject(GameScene* gameLayer, Point position, Json::Value info);
+    GameObject* initGameObject(Point position);
     virtual ~GameObject();
     bool checkCollision(Point destination, float targetRadius);
     
@@ -47,19 +41,18 @@ public:
     virtual void attack() = 0;
     
     Sprite* body;
-    ALLIANCE eAllianceType;
     GameScene* gameLayer;
     GameObject* target;
     Vector<GameObject *> attackBy;
 
-    int attackRange;
+    float attackRange;
     float damage;
     float thisRadius;
-    float maxHP;
     float currentHP;
     float virtualHP;
-    float attackRate;
+    float attackRatio;
     float attackSpeed;
     std::string weaponName;
+	Json::Value info;
 };
 #endif /* defined(__Game__GameObject__) */

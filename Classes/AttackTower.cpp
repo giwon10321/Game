@@ -10,7 +10,7 @@
 #include "GameScene.h"
 #include "Unit.h"
 
-AttackTower::AttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):Tower(_gameLayer, _position, _allianceType, _towerType)
+AttackTower::AttackTower(GameScene* gameLayer, Point position, Json::Value info):Tower(gameLayer, position, info)
 {
     this->initAttackTower();
 }

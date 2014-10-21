@@ -18,7 +18,7 @@ USING_NS_CC;
 class AttackTower : public Tower
 {
 public :
-    AttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    AttackTower(GameScene* gameLayer, Point position, Json::Value info);
     AttackTower* initAttackTower();
     virtual ~AttackTower();
     void update(float delta);

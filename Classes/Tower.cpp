@@ -10,9 +10,9 @@
 #include "Unit.h"
 #include "GameScene.h"
 
-Tower::Tower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):GameObject(_gameLayer, _position, _allianceType) , eTowerType(_towerType)
+Tower::Tower(GameScene* gameLayer, Point position, Json::Value info):GameObject(gameLayer, position, info)
 {
-    this->initTower(_towerType);
+    this->initTower();
 }
 
 Tower::~Tower()
@@ -20,8 +20,7 @@ Tower::~Tower()
     
 }
 
-Tower* Tower::initTower(TOWER_TYPE towerType){
-    this->eTowerType = towerType;
+Tower* Tower::initTower(){
     return this;
 }
 
@@ -37,4 +36,9 @@ void Tower::removeObject(float damage)
             this->removeFromParentAndCleanup(true);
         }
     }
+}
+
+void Tower::saveToInventory()
+{
+	
 }

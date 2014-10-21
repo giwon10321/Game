@@ -1,0 +1,79 @@
+{
+	"shop": {
+		"towers": [
+			{
+				"towerType": "normal",
+				"className": "NormalTower",
+				"name": "Arrow Tower",
+				"maxHP": 1000,
+				"shield": 0,
+				"damage": 50,
+				"attackRange": 200,
+				"attackSpeed": 1000,
+				"attackRatio": 0.5,
+				"radius": 32,
+				"length": 48,
+				"towerImageName": "tower.png",
+				"weaponImageName": "arrow.png",
+				"description": "화살 타워"
+			},
+			{
+				"towerType": "normal",
+				"className": "DetectingTower",
+				"name": "Detecting Tower"
+			},
+			{
+				"towerType": "super",
+				"className": "SuperTower",
+				"name": "Super Tower"
+			},
+			{
+				"towerType": "super",
+				"className": "SuperTower",
+				"name": "Super Tower2"
+			}
+		],
+		"upgrade": {
+			
+		}
+	},
+	"units" :[
+		{
+			"unitType": "normal",
+			"className": "Unit",
+			"name": "Sonic",
+			"maxHP": 500,
+			"shield": 0,
+			"damage": 50,
+			"attackRange": 80,
+			"attackSpeed": 500,
+			"attackRatio": 0.5,
+			"moveSpeed": 30,
+			"radius": 10,
+			"length": 48,
+			"unitImageName": "Player.png",
+			"weaponImageName": "arrow.png",
+			"description": "유닛"
+		}
+	],
+	"inventory": {
+		"towers": {
+			"14925846076033162201": {
+				"towerType": "normal",
+				"className": "NormalTower",
+				"name": "Arrow Tower",
+				"maxHP": 1000,
+				"shield": 0,
+				"damage": 50,
+				"attackRange": 200,
+				"attackSpeed": 1000,
+				"attackRatio": 0.5,
+				"radius": 32,
+				"length": 48,
+				"towerImageName": "tower.png",
+				"weaponImageName": "arrow.png",
+				"description": "화살 타워"
+			}
+		}
+	}
+}

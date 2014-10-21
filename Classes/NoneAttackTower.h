@@ -17,11 +17,9 @@ USING_NS_CC;
 class NoneAttackTower : public Tower
 {
 public:
-    NoneAttackTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    NoneAttackTower(GameScene* gameLayer, Point position, Json::Value info);
     virtual ~NoneAttackTower();
     NoneAttackTower* initNoneAttackTower();
-    
-//    virtual void Attack(GameObject* target, TMXTiledMap* map);
     
 };
 

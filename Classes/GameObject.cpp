@@ -8,9 +8,9 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType) : eAllianceType(_allianceType)
+GameObject::GameObject(GameScene* gameLayer, Point position, Json::Value info) : gameLayer(gameLayer), info(info)
 {
-    this->initGameObject(_gameLayer, _position, _allianceType);
+    this->initGameObject(position);
 }
 
 GameObject::~GameObject()
@@ -18,16 +18,12 @@ GameObject::~GameObject()
     
 }
 
-GameObject* GameObject::initGameObject(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType)
+GameObject* GameObject::initGameObject(Point position)
 {
     this->onEnter();
-    this->gameLayer = _gameLayer;
-    this->eAllianceType = _allianceType;
-    this->setPosition(_position);
-
+    this->setPosition(position);
     this->unsetTarget();
-
-    
+	
     return this;
 }
 

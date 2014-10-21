@@ -17,7 +17,7 @@ USING_NS_CC;
 class SuperTower : public AttackTower
 {
 public:
-    SuperTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    SuperTower(GameScene* gameLayer, Point position, Json::Value info);
     virtual ~SuperTower();
     SuperTower* initSuperTower();
     void update(float delta);

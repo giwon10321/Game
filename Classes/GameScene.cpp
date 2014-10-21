@@ -40,6 +40,9 @@ bool GameScene::init()
         return false;
     }
     
+    Database *db = Database::getInstance();
+//	db->addNormalTowerToInventory();
+	
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
@@ -91,17 +94,20 @@ bool GameScene::init()
     player_gold_label->setPosition(Vec2(origin.x + visibleSize.width - player_gold_label->getContentSize().width/2 ,                                        origin.y + visibleSize.height - player_gold_label->getContentSize().height/2));
     this->addChild(player_gold_label, 10);
 
-    auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),TYPE1);
-    auto unit1 = new Unit(this,PositionForTileCoord(Point(1,12)),TYPE1);
-    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,1)),TYPE1);
+    auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),db->getUnitList()[0]);
+    auto unit1 = new Unit(this,PositionForTileCoord(Point(1,12)),db->getUnitList()[0]);
+    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,1)),db->getUnitList()[0]);
 
     units.pushBack(unit);
     units.pushBack(unit1);
     units.pushBack(unit2);
-    
-    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),TYPE1,ARROW_NOMARL);
+
+    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),db->getShopList()["towers"][0]);
     towers.pushBack(normalTower);
-    
+	
+	std::vector<std::string> keys{"inventory","towers"};
+	db->saveToObject(keys, normalTower->info);
+	
     auto paraNode = ParallaxNode::create();
     
     paraNode->setTag(10);

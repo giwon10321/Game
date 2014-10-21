@@ -9,7 +9,7 @@
 #include "GameScene.h"
 #include "NormalTower.h"
 
-NormalTower::NormalTower(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType,  TOWER_TYPE _towerType):AttackTower(_gameLayer, _position, _allianceType, _towerType)
+NormalTower::NormalTower(GameScene* gameLayer, Point position, Json::Value info):AttackTower(gameLayer, position, info)
 {
     this->initNormalTower();
 }
@@ -21,16 +21,15 @@ NormalTower::~NormalTower()
 
 NormalTower* NormalTower::initNormalTower()
 {
-    this->body = Sprite::create("tower.png");
-    this->weaponName = "arrow.png";
-    this->maxHP = 1000.0f;
-    this->currentHP = this->maxHP;
-    this->virtualHP = this->maxHP;
-    this->attackRange = 200.0f;
-    this->attackRate = 0.5f;
-    this->attackSpeed = 0.2f;
-    this->damage = 30.0f;
-    this->thisRadius = 30.0f;
+    this->body = Sprite::create(info["towerImageName"].asString());
+    this->weaponName = info["weaponImageName"].asString();
+    this->currentHP = info["maxHP"].asFloat();
+    this->virtualHP = info["maxHP"].asFloat();
+    this->attackRange = info["attackRange"].asFloat();
+    this->attackRatio = info["attackRatio"].asFloat();
+    this->attackSpeed = info["attackSpeed"].asFloat();
+    this->damage = info["damage"].asFloat();
+    this->thisRadius = info["radius"].asFloat();
     
     this->addChild(this->body);
 
@@ -41,10 +40,10 @@ NormalTower* NormalTower::initNormalTower()
 
 void NormalTower::attack()
 {
-    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRate);
+    this->schedule(schedule_selector(NormalTower::shootWeapon), this->attackRatio);
 }
 
-void NormalTower::shootWeapon(float attackRate)
+void NormalTower::shootWeapon(float attackRatio)
 {
     if(this->target != nullptr){
         Sprite* weapon = Sprite::create(this->weaponName);
@@ -57,8 +56,9 @@ void NormalTower::shootWeapon(float attackRate)
         weapon->setRotation(angle);
         weapon->setPosition(this->getPosition());
         this->gameLayer->map->addChild(weapon,100);
-        
-        auto moveAction = MoveTo::create(this->attackSpeed,destination);
+		
+		float time = towerPosition.getDistance(destination)/this->attackSpeed;
+        auto moveAction = MoveTo::create(time,destination);
         auto damageAction = CallFunc::create(CC_CALLBACK_0(AttackTower::damageEnermy, this));
         auto removeAction = CallFuncN::create(CC_CALLBACK_1(AttackTower::removeWeapon, this));
         

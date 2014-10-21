@@ -9,9 +9,7 @@
 #ifndef __Game__NormalTower__
 #define __Game__NormalTower__
 
-#ifndef __Game__GameScene__
 #include "cocos2d.h"
-#endif
 #include "AttackTower.h"
 
 USING_NS_CC;
@@ -19,7 +17,7 @@ USING_NS_CC;
 class NormalTower : public AttackTower
 {
 public:
-    NormalTower(GameScene* _gameLayer, Point position, ALLIANCE _allianceType,  TOWER_TYPE _towerType);
+    NormalTower(GameScene* gameLayer, Point position, Json::Value info);
     NormalTower* initNormalTower();
     virtual ~NormalTower();
     void attack();

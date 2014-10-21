@@ -9,9 +9,7 @@
 #ifndef __Game__Unit__
 #define __Game__Unit__
 
-#ifndef __Game__GameScene__
 #include "cocos2d.h"
-#endif
 #include "GameObject.h"
 USING_NS_CC;
 
@@ -20,7 +18,7 @@ class Unit : public GameObject
 {
 public:
     Unit();
-    Unit(GameScene* _gameLayer, Point _position, ALLIANCE _allianceType);
+    Unit(GameScene* gameLayer, Point position, Json::Value info);
     Unit* initUnit();
     virtual ~Unit();
     void removeObject(float damage);

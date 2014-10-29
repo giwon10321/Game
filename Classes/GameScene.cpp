@@ -102,13 +102,16 @@ bool GameScene::init()
     units.pushBack(unit1);
     units.pushBack(unit2);
 
-    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),db->getShopList()["towers"][0]);
-    towers.pushBack(normalTower);
+//	auto towerData = db->addIdToObject(db->getShopList()["towers"][0]);
+//	std::cout<<towerData<<std::endl;
+//    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
+//    towers.pushBack(normalTower);
 	
-	std::vector<std::string> keys{"inventory","towers"};
-	db->saveToObject(keys, normalTower->info);
+//	std::vector<std::string> keys{"towers"};
+//	db->saveToObject(keys, normalTower->info);
 	
-    auto paraNode = ParallaxNode::create();
+	
+	auto paraNode = ParallaxNode::create();
     
     paraNode->setTag(10);
     

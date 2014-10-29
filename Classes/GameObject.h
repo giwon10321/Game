@@ -25,7 +25,8 @@ public:
     GameObject* initGameObject(Point position);
     virtual ~GameObject();
     bool checkCollision(Point destination, float targetRadius);
-    
+	void saveInfo();
+	
     virtual void setTarget(GameObject* obj);
     virtual void unsetTarget();
     virtual void getAttacked(GameObject* obj);

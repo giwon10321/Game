@@ -7,18 +7,33 @@
 //
 
 #include "Database.h"
+#include "cocos2d.h"
 #include <fstream>
 #include <stdlib.h>
 #include <ctime>
+
+USING_NS_CC;
 
 static Database* _instance;
 
 Database::Database()
 {
-    std::string filePath = FileUtils::getInstance()->fullPathForFilename(FILENAME);
-	std::ifstream in(filePath);
-	in >> root;
-	in.close();
+	FileUtils* fileUtils = FileUtils::getInstance();
+	std::string dataFilePath = fileUtils->getWritablePath()+this->dataFileName;
+	if(fileUtils->isFileExist(dataFilePath)){
+		std::ifstream inStream(dataFilePath);
+		inStream >> this->data;
+		inStream.close();
+	}else{
+		std::ifstream initDataStream(fileUtils->fullPathForFilename(this->dataFileName));
+		initDataStream >> this->data;
+		initDataStream.close();
+		
+		std::ofstream outStream(dataFilePath);
+		Json::StyledStreamWriter writer("\t");
+		writer.write(outStream, this->data);
+		outStream.close();
+	}
 }
 
 Database* Database::getInstance()
@@ -28,25 +43,6 @@ Database* Database::getInstance()
 	}
 	return _instance;
 }
-
-//	Json::Value root;
-//    root["Name"] = "Hong Gildong";
-//    root["Age"] = 26;
-//
-//    Json::Value friends;//배열
-//    friends.append("Im Kkeokjung");
-//    friends.append("Elisabeth");
-//    root["Friend"] = friends;
-//    root["Sex"] = "male";
-//
-//    Json::StyledWriter writer;
-//    std::string strJSON = writer.write(root);
-//
-//    log("JSON WriteTest : %s" , strJSON.c_str());
-//	std::cout<<root;
-//	for(Json::Value val : root["shop"]["towers"]){
-//		std::cout<<"Value : "<<val<<std::endl;
-//	}
 
 std::string Database::generateID()
 {
@@ -70,12 +66,11 @@ std::string Database::generateID()
 	return sstm.str();
 }
 
-Json::Value Database::addIdToObject(Json::Value object)
-{
-	Json::Value result;
-	result[this->generateID()] = object;
-	return result;
-}
+//Json::Value Database::addIdToObject(Json::Value object)
+//{
+//	object["id"] = this->generateID();
+//	return object;
+//}
 
 Json::Value Database::getObject(std::vector<std::string> keys)
 {
@@ -83,7 +78,7 @@ Json::Value Database::getObject(std::vector<std::string> keys)
 		log("there is no key");
 		return Json::Value();
 	}
-	Json::Value result = root;
+	Json::Value result = data;
 	for(auto key : keys){
 		result = result[key];
 	}
@@ -95,28 +90,78 @@ Json::Value Database::getShopList()
 	return this->getObject(std::vector<std::string>{"shop"});
 }
 
-Json::Value Database::getInventoryList()
-{
-	return this->getObject(std::vector<std::string>{"inventory"});
-}
-
 Json::Value Database::getUnitList()
 {
 	return this->getObject(std::vector<std::string>{"units"});
 }
 
+Json::Value Database::getUserInventory()
+{
+	return this->getObject(std::vector<std::string>{"inventory"});
+}
+
+Json::Value Database::find(std::vector<std::string> keys)
+{
+	return this->getObject(keys);
+}
+Json::Value Database::find(std::vector<std::string> keys, int index)
+{
+	return Json::Value();
+}
+Json::Value Database::find(std::vector<std::string> keys, std::string identifier, std::string value)
+{
+	for(auto data : this->getObject(keys)){
+		if(data[identifier].asString().compare(value) == 0){
+			return data;
+		}
+	}
+	return Json::Value();
+}
+
+void Database::remove(std::vector<std::string> keys, std::string identifier, std::string value)
+{
+	Json::Value originalData = this->getObject(keys);
+	Json::Value newData;
+	newData.append(Json::Value::null);
+	newData.clear();
+	
+	for(auto data : originalData){
+		if(data[identifier].asString().compare(value) != 0){
+			newData.append(data);
+		}
+	}
+	
+	this->getpObject(keys)->swap(newData);
+	
+}
+
+void Database::update(std::vector<std::string> keys, std::string identifier, std::string value, Json::Value object)
+{
+	
+}
+
 void Database::saveToObject(std::vector<std::string> keys, Json::Value object)
 {
-//	std::string filePath = FileUtils::getInstance()->fullPathForFilename(FILENAME);
-//	std::ofstream out;
-//	out.open(filePath,std::ios::trunc);
-//	Json::Value* addTo = &root;
-//	for(auto key : keys){
-//		addTo = &((*addTo)[key]);
-//	}
-//	(*addTo)[this->generateID()] = object;
-//	
-//	Json::StyledStreamWriter writer("\t");
-//	writer.write(out, root);
-//	out.close();
+	Json::Value* addTo = this->getpObject(keys);
+	(*addTo).append(object);
+	this->save();
+}
+
+Json::Value* Database::getpObject(std::vector<std::string> keys)
+{
+	Json::Value* pData = &this->data;
+	for(auto key : keys){
+		pData = &(*pData)[key];
+	}
+	return pData;
+}
+
+void Database::save()
+{
+	Json::StyledStreamWriter writer("\t");
+	std::string dataFilePath = FileUtils::getInstance()->getWritablePath()+this->dataFileName;
+	std::ofstream outStream;
+	outStream.open(dataFilePath,std::ios::trunc);
+	writer.write(outStream, this->data);
+	outStream.close();
 }

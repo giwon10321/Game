@@ -36,6 +36,12 @@ bool GameObject::checkCollision(Point destination, float targetRadius)
     return false;
 }
 
+void GameObject::saveInfo()
+{
+	std::vector<std::string> keys{"towers"};
+//	Database::getInstance()->saveToObject(keys, this->info);
+}
+
 void GameObject::setTarget(GameObject *obj)
 {
     this->target = nullptr;

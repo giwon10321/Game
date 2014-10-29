@@ -15,17 +15,42 @@
 				"length": 48,
 				"towerImageName": "tower.png",
 				"weaponImageName": "arrow.png",
-				"description": "화살 타워"
+				"description": "화살 타워",
+				"price": 100
 			},
 			{
 				"towerType": "normal",
-				"className": "DetectingTower",
-				"name": "Detecting Tower"
+				"className": "NormalTower",
+				"name": "Arrow Tower",
+				"maxHP": 1000,
+				"shield": 0,
+				"damage": 50,
+				"attackRange": 200,
+				"attackSpeed": 1000,
+				"attackRatio": 0.5,
+				"radius": 32,
+				"length": 48,
+				"towerImageName": "tower.png",
+				"weaponImageName": "arrow.png",
+				"description": "화살 타워",
+				"price": 100
 			},
 			{
-				"towerType": "super",
-				"className": "SuperTower",
-				"name": "Super Tower"
+				"towerType": "normal",
+				"className": "NormalTower",
+				"name": "Arrow Tower",
+				"maxHP": 1000,
+				"shield": 0,
+				"damage": 50,
+				"attackRange": 200,
+				"attackSpeed": 1000,
+				"attackRatio": 0.5,
+				"radius": 32,
+				"length": 48,
+				"towerImageName": "tower.png",
+				"weaponImageName": "arrow.png",
+				"description": "화살 타워",
+				"price": 100
 			},
 			{
 				"towerType": "super",
@@ -57,23 +82,8 @@
 		}
 	],
 	"inventory": {
-		"towers": {
-			"14925846076033162201": {
-				"towerType": "normal",
-				"className": "NormalTower",
-				"name": "Arrow Tower",
-				"maxHP": 1000,
-				"shield": 0,
-				"damage": 50,
-				"attackRange": 200,
-				"attackSpeed": 1000,
-				"attackRatio": 0.5,
-				"radius": 32,
-				"length": 48,
-				"towerImageName": "tower.png",
-				"weaponImageName": "arrow.png",
-				"description": "화살 타워"
-			}
-		}
+		"towers": [
+			
+		]
 	}
 }

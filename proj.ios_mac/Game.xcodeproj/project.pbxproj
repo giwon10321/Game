@@ -97,7 +97,7 @@
 		FE86F65F19EEA68E0015BF3D /* KompexSQLiteStatement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE86F65A19EEA68E0015BF3D /* KompexSQLiteStatement.cpp */; };
 		FE86F66119EEA68E0015BF3D /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = FE86F65C19EEA68E0015BF3D /* sqlite3.c */; };
 		FE9A098519EFEF2A00C35E77 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE9A098419EFEF2A00C35E77 /* jsoncpp.cpp */; };
-		FE9A098819EFFAA100C35E77 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = FE9A098719EFFAA100C35E77 /* data.json */; };
+		FECFFF0B19FFC341006E1094 /* gameData.json in Resources */ = {isa = PBXBuildFile; fileRef = FECFFF0A19FFC341006E1094 /* gameData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,7 +344,7 @@
 		FE9A098219EFEF2A00C35E77 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		FE9A098319EFEF2A00C35E77 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		FE9A098419EFEF2A00C35E77 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		FE9A098719EFFAA100C35E77 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		FECFFF0A19FFC341006E1094 /* gameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,7 +553,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FE9A098619EFFAA100C35E77 /* data */,
+				FECFFF0919FFC341006E1094 /* data */,
 				0111FB0319EE4C870079F773 /* box.png */,
 				010E8BE919E55DE80096776D /* inven1.png */,
 				010E8BEA19E55DE80096776D /* inven2.png */,
@@ -630,10 +630,10 @@
 			path = json;
 			sourceTree = "<group>";
 		};
-		FE9A098619EFFAA100C35E77 /* data */ = {
+		FECFFF0919FFC341006E1094 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				FE9A098719EFFAA100C35E77 /* data.json */,
+				FECFFF0A19FFC341006E1094 /* gameData.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -810,7 +810,6 @@
 				010E8BED19E55DE80096776D /* inven1.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				010E8BEF19E55DE80096776D /* shop1.png in Resources */,
-				FE9A098819EFFAA100C35E77 /* data.json in Resources */,
 				FE4AF5C619B9991600A9E581 /* tower.png in Resources */,
 				0155F66519BA07FD0084A7E8 /* PlayerPower.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
@@ -832,6 +831,7 @@
 				01188B7E19E31439004DE624 /* button.png in Resources */,
 				0155F66119BA07FD0084A7E8 /* test.tmx in Resources */,
 				FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */,
+				FECFFF0B19FFC341006E1094 /* gameData.json in Resources */,
 				010E8BF019E55DE80096776D /* shop2.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,

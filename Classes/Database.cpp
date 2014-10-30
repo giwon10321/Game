@@ -20,6 +20,7 @@ Database::Database()
 {
 	FileUtils* fileUtils = FileUtils::getInstance();
 	std::string dataFilePath = fileUtils->getWritablePath()+this->dataFileName;
+	std::cout<<dataFilePath<<std::endl;
 	if(fileUtils->isFileExist(dataFilePath)){
 		std::ifstream inStream(dataFilePath);
 		inStream >> this->data;
@@ -66,11 +67,11 @@ std::string Database::generateID()
 	return sstm.str();
 }
 
-//Json::Value Database::addIdToObject(Json::Value object)
-//{
-//	object["id"] = this->generateID();
-//	return object;
-//}
+Json::Value Database::addIdToObject(Json::Value object)
+{
+	object["id"] = this->generateID();
+	return object;
+}
 
 Json::Value Database::getObject(std::vector<std::string> keys)
 {
@@ -137,7 +138,8 @@ void Database::remove(std::vector<std::string> keys, std::string identifier, std
 
 void Database::update(std::vector<std::string> keys, std::string identifier, std::string value, Json::Value object)
 {
-	
+	this->remove(keys, identifier, value);
+	this->saveToObject(keys, object);
 }
 
 void Database::saveToObject(std::vector<std::string> keys, Json::Value object)

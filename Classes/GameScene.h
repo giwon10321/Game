@@ -67,7 +67,6 @@ public:
     int player_gold;
     Label* player_gold_label;
     bool setupTower;
-    HudLayer* newLayer;
 };
 
 

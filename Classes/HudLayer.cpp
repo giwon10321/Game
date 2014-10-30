@@ -7,6 +7,7 @@
 //
 
 #include "HudLayer.h"
+#include "Database.h"
 
 
 // on "init" you need to initialize your instance
@@ -50,6 +51,11 @@ void HudLayer::event(Ref* pSender)
   //  log("clicked");
     if(isShop == false)
     {
+        Database *db = Database::getInstance();
+        
+        Json::Value shopList = db->getShopList();
+    
+        
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
@@ -85,11 +91,23 @@ void HudLayer::event(Ref* pSender)
             cell->setPosition(Vec2(i*300+150, 150+130));
             
             auto buyButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::callBack, this));
+            buyButton->setName(shopList["towers"][i]["name"].asString());
             
             auto menu = Menu::create(buyButton, NULL);
             menu->setPosition(Vec2(150, 50));
             
+            auto label = Label::create();
+            std::string information = "Type: "+shopList["towers"][i]["towerType"].asString()+"\nClass: "+shopList["towers"][i]["className"].asString()+"\nName: "+shopList["towers"][i]["name"].asString();
+            
+            label->setString(information);
+            label->setSystemFontSize(20);
+            label->setColor(Color3B(0, 0, 0));
+            label->setPosition(Vec2(150, 150));
+
+         //   cell->setName(shopList["towers"][i]["name"].asString());
             cell->addChild(menu);
+            cell->addChild(label);
+            
             /*
              auto menuItem3 = MenuItemImage::create("box.png", "box.png", CC_CALLBACK_1(HudLayer::callBack, this));
              menuItem3->setPositionX(i*300-250);
@@ -110,6 +128,7 @@ void HudLayer::event(Ref* pSender)
         container2->setContentSize(Size(800, 300));
     //    container2->addChild(menu);
         
+
         scrollView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container2);
         scrollView2->setBounceable(false);
         scrollView2->setDirection(ScrollView::Direction::HORIZONTAL);
@@ -212,6 +231,12 @@ void HudLayer::scrollViewDidZoom(ScrollView* view)
 {}
 void HudLayer::callBack(Ref* pSender)
 {
-
+    Database *db = Database::getInstance();
+    
+    Json::Value shopList = db->getShopList();
+ 
+    auto touched = (MenuItemImage*)pSender;
+    
+    log("%s is purchased.", touched->getName().c_str());
 }
 

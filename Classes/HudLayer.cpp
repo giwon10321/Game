@@ -83,38 +83,7 @@ void HudLayer::event(Ref* pSender)
         container->setPosition(Vec2::ZERO);
         container->setContentSize(Size(800, 300));
         container->addChild(menu);
-        
-        for(int i=0;i<4;i++)
-        {
-            //contents : image, hp,
-            auto cell = Sprite::create("box.png");
-            cell->setPosition(Vec2(i*300+150, 150+130));
-            
-            auto buyButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::callBack, this));
-            buyButton->setName(shopList["towers"][i]["name"].asString());
-            
-            auto menu = Menu::create(buyButton, NULL);
-            menu->setPosition(Vec2(150, 50));
-            
-            auto label = Label::create();
-            std::string information = "Type: "+shopList["towers"][i]["towerType"].asString()+"\nClass: "+shopList["towers"][i]["className"].asString()+"\nName: "+shopList["towers"][i]["name"].asString();
-            
-            label->setString(information);
-            label->setSystemFontSize(20);
-            label->setColor(Color3B(0, 0, 0));
-            label->setPosition(Vec2(150, 150));
-
-         //   cell->setName(shopList["towers"][i]["name"].asString());
-            cell->addChild(menu);
-            cell->addChild(label);
-            
-            /*
-             auto menuItem3 = MenuItemImage::create("box.png", "box.png", CC_CALLBACK_1(HudLayer::callBack, this));
-             menuItem3->setPositionX(i*300-250);
-             menuItem3->setPositionY(130);
-             */
-            container->addChild(cell);
-        }
+		
         scrollView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container);
         scrollView1->setBounceable(false);
         scrollView1->setDirection(ScrollView::Direction::HORIZONTAL);

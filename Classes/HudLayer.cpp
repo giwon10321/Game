@@ -54,8 +54,7 @@ void HudLayer::event(Ref* pSender)
         Database *db = Database::getInstance();
         
         Json::Value shopList = db->getShopList();
-    
-        
+		
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
@@ -74,10 +73,7 @@ void HudLayer::event(Ref* pSender)
         window->addChild(tab2);
         
         auto menu = Menu::create();
-
-        
-      //  menu->setPosition(Vec2(400, 150));
-        
+		
         _touchListener->setSwallowTouches(true);
         auto container = LayerColor::create(Color4B(255, 255, 0, 255));
         container->setPosition(Vec2::ZERO);
@@ -95,9 +91,7 @@ void HudLayer::event(Ref* pSender)
         auto container2 = LayerColor::create(Color4B(0, 255, 255, 255));
         container2->setPosition(Vec2::ZERO);
         container2->setContentSize(Size(800, 300));
-    //    container2->addChild(menu);
-        
-
+		
         scrollView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container2);
         scrollView2->setBounceable(false);
         scrollView2->setDirection(ScrollView::Direction::HORIZONTAL);
@@ -111,8 +105,6 @@ void HudLayer::event(Ref* pSender)
     }
     else
     {
-       // auto scrollView = getChildByTag(4);
-       // scrollView->removeFromParent();
         window->removeFromParent();
 
         _touchListener->setSwallowTouches(false);
@@ -130,13 +122,10 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     
     if(isShop == true)
     {
-        
-     //   auto scrollView = getChildByTag(4);
         auto range = window->getBoundingBox();
-
+		
         if(!range.containsPoint(touchPoint))
         {
-//            scrollView->removeFromParent();
             log("bye");
             window->removeFromParent();
             _touchListener->setSwallowTouches(false);
@@ -163,31 +152,12 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
             
         }
     }
-    //    prevPt = touchPoint;
-    //    auto para = (ParallaxNode*)getChildByTag(10);
-    //
-    //    log("real position = (%f, %f)", touchPoint.x - para->getPositionX(),touchPoint.y - para->getPositionY() );
-    //    Point index = positionToTileCoord(Point(touchPoint.x - para->getPositionX(), touchPoint.y - para->getPositionY()-16));
-    //    log("index position = (%f, %f)", index.x, index.y);
-    //
-    //    auto sonic = Sprite::create("Player.png");
-    //
-    //    Point processed = PositionForTileCoord(Point(index.x, index.y));
-    //    log("processed = (%f, %f)", processed.x, processed.y);
-    //    sonic->setPosition(processed.x, processed.y + 16);
-    //
-    //    map->addChild(sonic, 3);
-    //
-    //    auto tile = Sprite::create("blue_tile.png");
-    //    tile->setPosition(processed.x, processed.y);
-    //    
-    //    map->addChild(tile, 2);
-    
     return true;
 }
 
 void HudLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
+
 }
 
 void HudLayer::scrollViewDidScroll(ScrollView* view)
@@ -197,15 +167,17 @@ void HudLayer::scrollViewDidScroll(ScrollView* view)
 //  log("scrollViewDidScroll: %f, %f", contentOffset.x, contentOffset.y);
 }
 void HudLayer::scrollViewDidZoom(ScrollView* view)
-{}
+{
+	
+}
 void HudLayer::callBack(Ref* pSender)
 {
-    Database *db = Database::getInstance();
-    
-    Json::Value shopList = db->getShopList();
- 
-    auto touched = (MenuItemImage*)pSender;
-    
-    log("%s is purchased.", touched->getName().c_str());
+//    Database *db = Database::getInstance();
+//    
+//    Json::Value shopList = db->getShopList();
+// 
+//    auto touched = (MenuItemImage*)pSender;
+//    
+//    log("%s is purchased.", touched->getName().c_str());
 }
 

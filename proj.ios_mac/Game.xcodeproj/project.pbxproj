@@ -91,6 +91,7 @@
 		FE4AF5D519B9AA0000A9E581 /* NormalTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5D319B9AA0000A9E581 /* NormalTower.cpp */; };
 		FE4AF5DB19B9AA7D00A9E581 /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE4AF5D919B9AA7D00A9E581 /* Unit.cpp */; };
 		FE4AF5DD19B9ADFB00A9E581 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FE4AF5DC19B9ADFB00A9E581 /* arrow.png */; };
+		FE5179421A03766100C0EB6E /* ShopTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE5179401A03766100C0EB6E /* ShopTableView.cpp */; };
 		FE7BC4C919EF9505007F8379 /* Database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE7BC4C719EF9505007F8379 /* Database.cpp */; };
 		FE86F65D19EEA68E0015BF3D /* KompexSQLiteBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE86F65819EEA68E0015BF3D /* KompexSQLiteBlob.cpp */; };
 		FE86F65E19EEA68E0015BF3D /* KompexSQLiteDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE86F65919EEA68E0015BF3D /* KompexSQLiteDatabase.cpp */; };
@@ -327,6 +328,8 @@
 		FE4AF5D919B9AA7D00A9E581 /* Unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Unit.cpp; path = ../Classes/Unit.cpp; sourceTree = "<group>"; };
 		FE4AF5DA19B9AA7D00A9E581 /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unit.h; path = ../Classes/Unit.h; sourceTree = "<group>"; };
 		FE4AF5DC19B9ADFB00A9E581 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		FE5179401A03766100C0EB6E /* ShopTableView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShopTableView.cpp; path = ../Classes/ShopTableView.cpp; sourceTree = "<group>"; };
+		FE5179411A03766100C0EB6E /* ShopTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopTableView.h; path = ../Classes/ShopTableView.h; sourceTree = "<group>"; };
 		FE7BC4C719EF9505007F8379 /* Database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Database.cpp; path = ../Classes/Database.cpp; sourceTree = "<group>"; };
 		FE7BC4C819EF9505007F8379 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = ../Classes/Database.h; sourceTree = "<group>"; };
 		FE86F64F19EEA68E0015BF3D /* KompexSQLiteBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KompexSQLiteBlob.h; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				0123965E19DD6B7100056163 /* HudLayer.h */,
 				FE7BC4C719EF9505007F8379 /* Database.cpp */,
 				FE7BC4C819EF9505007F8379 /* Database.h */,
+				FE5179401A03766100C0EB6E /* ShopTableView.cpp */,
+				FE5179411A03766100C0EB6E /* ShopTableView.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -865,6 +870,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				FE7BC4C919EF9505007F8379 /* Database.cpp in Sources */,
 				FE4AF5BE19B8CEBA00A9E581 /* AttackTower.cpp in Sources */,
+				FE5179421A03766100C0EB6E /* ShopTableView.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FE86F65F19EEA68E0015BF3D /* KompexSQLiteStatement.cpp in Sources */,
 				FE4AF5BB19B8CE5500A9E581 /* Tower.cpp in Sources */,

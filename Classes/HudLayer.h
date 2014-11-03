@@ -29,9 +29,11 @@ public:
     
     virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
-    void event(Ref* pSender);
+    void shopEvent(Ref* pSender);
     
-    void callBack(Ref* pSender);
+    void invenEvent(Ref* pSender);
+    
+    void purchased(Ref* pSender);
     
     void scrollViewDidScroll(ScrollView* view);
     
@@ -42,16 +44,19 @@ public:
     CREATE_FUNC(HudLayer);
 private:
     cocos2d::Label* label;
-    MenuItemImage* menuButton;
     bool isInventory;
     bool isShop;
-    ScrollView* scrollView1;
-    ScrollView* scrollView2;
-    LayerColor* window;
-    LayerColor* tab1;
-    LayerColor* tab2;
+    ScrollView* shopView1;
+    ScrollView* shopView2;
+    LayerColor* shopWindow;
+    LayerColor* shopTab1;
+    LayerColor* shopTab2;
     
-    
+    ScrollView* invenView1;
+    ScrollView* invenView2;
+    LayerColor* invenWindow;
+    LayerColor* invenTab1;
+    LayerColor* invenTab2;
     
     
     

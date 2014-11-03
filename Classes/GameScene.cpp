@@ -265,6 +265,7 @@ void GameScene::summonEnemy(float f)
 }
 void GameScene::awardGold(int gold)
 {
+    log("awardGold");
     player_gold = player_gold + gold;
     
 }

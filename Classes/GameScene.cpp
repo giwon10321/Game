@@ -102,13 +102,19 @@ bool GameScene::init()
     units.pushBack(unit1);
     units.pushBack(unit2);
 
-//	auto towerData = db->addIdToObject(db->getShopList()["towers"][0]);
+//	std::cout<<db->getShopList()["towers"][0]<<std::endl;
+	auto towerData = db->addIdToObject(db->getShopList()["towers"][0]);
 //	std::cout<<towerData<<std::endl;
-//    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
-//    towers.pushBack(normalTower);
-	
-//	std::vector<std::string> keys{"towers"};
-//	db->saveToObject(keys, normalTower->info);
+    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
+    towers.pushBack(normalTower);
+
+//	db->saveToObject(std::vector<std::string>{"inventory","towers"}, normalTower->info);
+//	std::cout<<db->getUserInventory()<<std::endl;
+//	normalTower->info["attackRange"] = 400;
+//	std::cout<<normalTower->info<<std::endl;
+//	db->update(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString(), normalTower->info);
+//	db->remove(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString());
+//	std::cout<<db->getUserInventory()<<std::endl;
 	
 	
 	auto paraNode = ParallaxNode::create();

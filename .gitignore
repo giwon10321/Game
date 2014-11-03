@@ -47,5 +47,3 @@ out/
 *.tar
 *.tgz
 *.gtgz
-
-Classes/GameScene.cpp

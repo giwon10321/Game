@@ -18,6 +18,7 @@ Scene* GameScene::createScene()
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
         // add layer as a child to scene
+    layer->setTag(101);
     scene->addChild(layer);
     
     auto hudLayer = HudLayer::create();
@@ -85,6 +86,7 @@ bool GameScene::init()
     map->setScale(1.5f);
     
     
+    player_gold = 100;
     player_gold_label = Label::create();
     
     char buf[100];

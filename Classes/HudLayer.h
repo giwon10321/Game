@@ -10,13 +10,14 @@
 #define __Game__HudLayer__
 
 #include "cocos2d.h"
+#include "ShopTableView.h"
 #include <iostream>
 #include "cocos-ext.h"
 #include "sqlite3.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class HudLayer : public cocos2d::Layer, public extension::ScrollViewDelegate
+class HudLayer : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -33,10 +34,6 @@ public:
     
     void callBack(Ref* pSender);
     
-    void scrollViewDidScroll(ScrollView* view);
-    
-    void scrollViewDidZoom(ScrollView* view);
-    
     int score;
     // implement the "static create()" method manually
     CREATE_FUNC(HudLayer);
@@ -50,12 +47,18 @@ private:
     LayerColor* window;
     LayerColor* tab1;
     LayerColor* tab2;
-    
-    
-    
-    
-    
-    
+	
+	const int numberOfTabs = 3;
+	
+	Size winSize;
+	Size listSize;
+	Size tabSize;
+	
+	Point winPoint;
+	Point listPoint;
+	Point tabPoint;
+	
+	ShopTableView* shopTableView;
 };
 
 #endif /* defined(__Game__HudLayer__) */

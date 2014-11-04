@@ -23,9 +23,7 @@ Scene* GameScene::createScene()
     auto hudLayer = HudLayer::create();
     hudLayer->setTag(100);
     scene->addChild(hudLayer);
-    
-    
-    
+	
     // return the scene
     return scene;
 }
@@ -94,19 +92,31 @@ bool GameScene::init()
     player_gold_label->setPosition(Vec2(origin.x + visibleSize.width - player_gold_label->getContentSize().width/2 ,                                        origin.y + visibleSize.height - player_gold_label->getContentSize().height/2));
     this->addChild(player_gold_label, 10);
 
-    auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),db->getUnitList()[0]);
-    auto unit1 = new Unit(this,PositionForTileCoord(Point(1,12)),db->getUnitList()[0]);
-    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,1)),db->getUnitList()[0]);
+//    auto unit = new Unit(this,PositionForTileCoord(Point(10,12)),db->getUnitList()[0]);
+//    auto unit1 = new Unit(this,PositionForTileCoord(Point(1,12)),db->getUnitList()[0]);
+//    auto unit2 = new Unit(this,PositionForTileCoord(Point(10,1)),db->getUnitList()[0]);
+//	auto unit3 = new Unit(this,PositionForTileCoord(Point(11,1)),db->getUnitList()[0]);
+//	auto unit4 = new Unit(this,PositionForTileCoord(Point(10,15)),db->getUnitList()[0]);
+//	auto unit5 = new Unit(this,PositionForTileCoord(Point(10,3)),db->getUnitList()[0]);
+//	
+//    units.pushBack(unit);
+//    units.pushBack(unit1);
+//    units.pushBack(unit2);
+//	units.pushBack(unit3);
+//	units.pushBack(unit4);
+//	units.pushBack(unit5);
 
-    units.pushBack(unit);
-    units.pushBack(unit1);
-    units.pushBack(unit2);
-
-//	std::cout<<db->getShopList()["towers"][0]<<std::endl;
-	auto towerData = db->addIdToObject(db->getShopList()["towers"][0]);
+//	auto towerData = db->addIdToObject(db->getShopList()["towers"][0]);
+//	auto towerData2 = db->addIdToObject(db->getShopList()["towers"][0]);
+//	auto towerData3 = db->addIdToObject(db->getShopList()["towers"][0]);
 //	std::cout<<towerData<<std::endl;
-    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
-    towers.pushBack(normalTower);
+
+//    auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
+//    auto normalTower2 = new NormalTower(this,PositionForTileCoord(Point(6, 10)),towerData2);
+//	auto normalTower3 = new NormalTower(this,PositionForTileCoord(Point(6, 13)),towerData3);
+//    towers.pushBack(normalTower);
+//	towers.pushBack(normalTower2);
+//	towers.pushBack(normalTower3);
 
 //	db->saveToObject(std::vector<std::string>{"inventory","towers"}, normalTower->info);
 //	std::cout<<db->getUserInventory()<<std::endl;

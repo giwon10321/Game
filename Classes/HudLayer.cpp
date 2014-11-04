@@ -80,30 +80,31 @@ void HudLayer::shopEvent(Ref* pSender)
         // shopWindow init
         shopWindow = LayerColor::create(Color4B(255, 0, 255, 0));
         shopWindow->setContentSize(Size(visibleSize.width/4*3, visibleSize.height/4*3));
-        shopWindow->setPosition(140, 80);
+        shopWindow->setPosition(visibleSize.width/8, visibleSize.height/8); //140, 80
         
         // shopTab1 init
         shopTab1 = LayerColor::create(Color4B(255, 255, 0, 255));
         shopTab1->setContentSize(Size(100, 50));
-        shopTab1->setPosition(1, visibleSize.height/4*3-50);
+        shopTab1->setPosition(1, visibleSize.height/4*3-shopTab1->getContentSize().height);
         shopWindow->addChild(shopTab1);
         
         // shopTab2 init
         shopTab2 = LayerColor::create(Color4B(0, 255, 255, 255));
         shopTab2->setContentSize(Size(100, 50));
-        shopTab2->setPosition(101, visibleSize.height/4*3-50);
+        shopTab2->setPosition(1+shopTab1->getContentSize().width, visibleSize.height/4*3-shopTab1->getContentSize().height);
         shopWindow->addChild(shopTab2);
         
         // temp container for scrollView
         auto container = LayerColor::create(Color4B(255, 255, 0, 255));
         container->setPosition(Vec2::ZERO);
-        container->setContentSize(Size(800, 300));
+        container->setContentSize(Size(300*4, visibleSize.height/4*3-shopTab1->getContentSize().height));
         
-        for(int i=0;i<4;i++)
+        for(int i=0;i<shopList["towers"].size();i++)
         {
             // fill contents
             auto cell = Sprite::create("box.png");
-            cell->setPosition(Vec2(i*300+150, 150+130));
+            cell->setPosition(Vec2(i*cell->getContentSize().width+cell->getContentSize().width/2, cell->getContentSize().height/2));
+          //  cell->setPosition(Vec2(i*cell->getContentSize().width, 0));
             
             auto buyButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::purchased, this));
             buyButton->setName(shopList["towers"][i]["name"].asString());
@@ -119,7 +120,7 @@ void HudLayer::shopEvent(Ref* pSender)
             label->setColor(Color3B(0, 0, 0));
             label->setPosition(Vec2(150, 150));
 
-         //   cell->setName(shopList["towers"][i]["name"].asString());
+            // cell->setName(shopList["towers"][i]["name"].asString());
             cell->addChild(menu);
             cell->addChild(label);
             
@@ -127,25 +128,25 @@ void HudLayer::shopEvent(Ref* pSender)
         }
         
         // shopTab1 scrollView init
-        shopView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container);
+        shopView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-shopTab1->getContentSize().height), container);
         shopView1->setBounceable(false);
         shopView1->setDirection(ScrollView::Direction::HORIZONTAL);
         shopView1->setPosition(0, 0);
-        shopView1->setContentSize(Size(300*4, visibleSize.height/4*3-50));
+        shopView1->setContentSize(Size(300*shopList["towers"].size(), visibleSize.height/4*3-shopTab1->getContentSize().height));
         shopView1->setDelegate(this);
         shopWindow->addChild(shopView1, 5);
         
         // temp container for scrollView
         auto container2 = LayerColor::create(Color4B(0, 255, 255, 255));
         container2->setPosition(Vec2::ZERO);
-        container2->setContentSize(Size(800, 300));
+        
         
         // shopTab2 scrollView init
-        shopView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container2);
+        shopView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-shopTab1->getContentSize().height), container2);
         shopView2->setBounceable(false);
         shopView2->setDirection(ScrollView::Direction::HORIZONTAL);
         shopView2->setPosition(0, 0);
-        shopView2->setContentSize(Size(visibleSize.width/4*3+200, visibleSize.height/4*3-50));
+        shopView2->setContentSize(Size(1000, visibleSize.height/4*3-shopTab1->getContentSize().height));
         shopView2->setDelegate(this);
         shopWindow->addChild(shopView2, 4);
         
@@ -190,45 +191,43 @@ void HudLayer::invenEvent(Ref* pSender)
         // invenWindow init
         invenWindow = LayerColor::create(Color4B(255, 0, 255, 0));
         invenWindow->setContentSize(Size(visibleSize.width/4*3, visibleSize.height/4*3));
-        invenWindow->setPosition(140, 80);
+        invenWindow->setPosition(visibleSize.width/8, visibleSize.height/8);
         
         // invenTab1 init
         invenTab1 = LayerColor::create(Color4B(123, 123, 0, 255));
         invenTab1->setContentSize(Size(100, 50));
-        invenTab1->setPosition(1, visibleSize.height/4*3-50);
+        invenTab1->setPosition(1, visibleSize.height/4*3-invenTab1->getContentSize().height);
         invenWindow->addChild(invenTab1);
         
         // invenTab2 init
         invenTab2 = LayerColor::create(Color4B(0, 123, 123, 255));
         invenTab2->setContentSize(Size(100, 50));
-        invenTab2->setPosition(101, visibleSize.height/4*3-50);
+        invenTab2->setPosition(1+invenTab1->getContentSize().width, visibleSize.height/4*3-invenTab1->getContentSize().height);
         invenWindow->addChild(invenTab2);
         
         // temp container for scrollView
         auto container = LayerColor::create(Color4B(123, 123, 0, 255));
         container->setPosition(Vec2::ZERO);
-        container->setContentSize(Size(800, 300));
 
         // invenTab1 scrollView init
-        invenView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container);
+        invenView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-invenTab1->getContentSize().height), container);
         invenView1->setBounceable(false);
         invenView1->setDirection(ScrollView::Direction::HORIZONTAL);
         invenView1->setPosition(0, 0);
-        invenView1->setContentSize(Size(300*4, visibleSize.height/4*3-50));
+        invenView1->setContentSize(Size(300*4, visibleSize.height/4*3-invenTab1->getContentSize().height));
         invenView1->setDelegate(this);
         invenWindow->addChild(invenView1, 5);
         
         // temp container for scrollView
         auto container2 = LayerColor::create(Color4B(0, 123, 123, 255));
         container2->setPosition(Vec2::ZERO);
-        container2->setContentSize(Size(800, 300));
         
         // invenTab2 scrollView init
-        invenView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container2);
+        invenView2 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-invenTab1->getContentSize().height), container2);
         invenView2->setBounceable(false);
         invenView2->setDirection(ScrollView::Direction::HORIZONTAL);
         invenView2->setPosition(0, 0);
-        invenView2->setContentSize(Size(visibleSize.width/4*3+200, visibleSize.height/4*3-50));
+        invenView2->setContentSize(Size(visibleSize.width/4*3+200, visibleSize.height/4*3-invenTab1->getContentSize().height));
         invenView2->setDelegate(this);
         invenWindow->addChild(invenView2, 4);
         
@@ -248,6 +247,9 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
     
     log("Default Touch began : (%f %f)",touchPoint.x, touchPoint.y);
     
+    // get entire winodw size
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+
     if(isShop == true)
     {
         // if outside is clicked, close shopWindow
@@ -260,12 +262,10 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
             _touchListener->setSwallowTouches(false);
             isShop = false;
             return true;
-
         }
-        
         // if tab is clicked, swap ohter container
         range = shopTab1->getBoundingBox();
-        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        range.setRect(range.getMinX()+visibleSize.width/8, range.getMinY()+visibleSize.height/8, range.size.width, range.size.height);
         if(range.containsPoint(touchPoint))
         {
             log("yellow touched");
@@ -273,7 +273,7 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
             shopView2->setVisible(false);
         }
         range = shopTab2->getBoundingBox();
-        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        range.setRect(range.getMinX()+visibleSize.width/8, range.getMinY()+visibleSize.height/8, range.size.width, range.size.height);
         if(range.containsPoint(touchPoint))
         {
             log("cyan touched");
@@ -298,7 +298,7 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
         
         // if tab is clicked, swap other container
         range = invenTab1->getBoundingBox();
-        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        range.setRect(range.getMinX()+visibleSize.width/8, range.getMinY()+visibleSize.height/8, range.size.width, range.size.height);
         if(range.containsPoint(touchPoint))
         {
             log("dark yellow touched");
@@ -306,7 +306,7 @@ bool HudLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
             invenView2->setVisible(false);
         }
         range = invenTab2->getBoundingBox();
-        range.setRect(range.getMinX()+140, range.getMinY()+80, range.size.width, range.size.height);
+        range.setRect(range.getMinX()+visibleSize.width/8, range.getMinY()+visibleSize.height/8, range.size.width, range.size.height);
         if(range.containsPoint(touchPoint))
         {
             log("dark cyan touched");

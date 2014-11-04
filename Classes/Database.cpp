@@ -101,6 +101,11 @@ Json::Value Database::getUserInventory()
 	return this->getObject(std::vector<std::string>{"inventory"});
 }
 
+Json::Value Database::getUserInfo()
+{
+	return this->getObject(std::vector<std::string>{"userInfo"});
+}
+
 Json::Value Database::find(std::vector<std::string> keys)
 {
 	return this->getObject(keys);

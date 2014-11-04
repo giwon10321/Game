@@ -23,6 +23,7 @@ public:
 	Json::Value getShopList();
 	Json::Value getUnitList();
 	Json::Value getUserInventory();
+	Json::Value getUserInfo();
 	
 	Json::Value find(std::vector<std::string> keys);
 	Json::Value find(std::vector<std::string> keys, std::string identifier, std::string value);

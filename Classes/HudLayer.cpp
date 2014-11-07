@@ -106,7 +106,7 @@ void HudLayer::shopEvent(Ref* pSender)
             cell->setPosition(Vec2(i*cell->getContentSize().width+cell->getContentSize().width/2, cell->getContentSize().height/2));
           //  cell->setPosition(Vec2(i*cell->getContentSize().width, 0));
             
-            auto buyButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::purchased, this));
+            auto buyButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::purchase, this));
             buyButton->setName(shopList["towers"][i]["name"].asString());
             
             auto menu = Menu::create(buyButton, NULL);
@@ -177,7 +177,7 @@ void HudLayer::invenEvent(Ref* pSender)
         // DB init
         Database *db = Database::getInstance();
         
-        Json::Value shopList = db->getShopList();
+        Json::Value invenList = db->getUserInventory();
 
         // disable touches without current layer
         _touchListener->setSwallowTouches(true);
@@ -209,12 +209,40 @@ void HudLayer::invenEvent(Ref* pSender)
         auto container = LayerColor::create(Color4B(123, 123, 0, 255));
         container->setPosition(Vec2::ZERO);
 
+        for(int i=0;i<invenList["towers"].size();i++)
+        {
+            // fill contents
+            auto cell = Sprite::create("box.png");
+            cell->setPosition(Vec2(i*cell->getContentSize().width+cell->getContentSize().width/2, cell->getContentSize().height/2));
+            //  cell->setPosition(Vec2(i*cell->getContentSize().width, 0));
+            
+            auto locateButton = MenuItemImage::create("button.png", "button2.png", CC_CALLBACK_1(HudLayer::locate, this));
+            locateButton->setName(invenList["towers"][i]["name"].asString());
+            
+            auto menu = Menu::create(locateButton, NULL);
+            menu->setPosition(Vec2(150, 50));
+            
+            auto label = Label::create();
+            std::string information = "Type: "+invenList["towers"][i]["towerType"].asString()+"\nClass: "+invenList["towers"][i]["className"].asString()+"\nName: "+invenList["towers"][i]["name"].asString()+"\nPrice: "+invenList["towers"][i]["price"].asString()+"\nID: "+invenList["towers"][i]["id"].asString();
+            
+            label->setString(information);
+            label->setSystemFontSize(20);
+            label->setColor(Color3B(0, 0, 0));
+            label->setPosition(Vec2(150, 150));
+            
+            // cell->setName(shopList["towers"][i]["name"].asString());
+            cell->addChild(menu);
+            cell->addChild(label);
+            
+            container->addChild(cell);
+        }
+        
         // invenTab1 scrollView init
         invenView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-invenTab1->getContentSize().height), container);
         invenView1->setBounceable(false);
         invenView1->setDirection(ScrollView::Direction::HORIZONTAL);
         invenView1->setPosition(0, 0);
-        invenView1->setContentSize(Size(300*4, visibleSize.height/4*3-invenTab1->getContentSize().height));
+        invenView1->setContentSize(Size(300*invenList["towers"].size(), visibleSize.height/4*3-invenTab1->getContentSize().height));
         invenView1->setDelegate(this);
         invenWindow->addChild(invenView1, 5);
         
@@ -331,19 +359,28 @@ void HudLayer::scrollViewDidScroll(ScrollView* view)
 }
 void HudLayer::scrollViewDidZoom(ScrollView* view)
 {}
-void HudLayer::purchased(Ref* pSender)
+void HudLayer::purchase(Ref* pSender)
 {
     // DB init
     Database *db = Database::getInstance();
     
     Json::Value shopList = db->getShopList();
- 
+    
+    Json::Value value;
+
     // get selector
     auto touched = (MenuItemImage*)pSender;
     
     // get other layer
     auto gameLayer = (GameScene*)(this->getParent()->getChildByTag(101));
     
+    for(int i=0;i<shopList["towers"].size();i++)
+    {
+
+        if(shopList["towers"][i]["name"].asString() == touched->getName().c_str())
+            value = db->addIdToObject(shopList["towers"][i]);
+    }
+    gameLayer->addTowerToInven(value);
     gameLayer->player_gold -= 10;
     
     char buf[100];
@@ -351,5 +388,16 @@ void HudLayer::purchased(Ref* pSender)
     gameLayer->player_gold_label->setString(buf);
     
     log("%s is purchased.", touched->getName().c_str());
+}
+void HudLayer::locate(Ref* pSender)
+{
+    // DB init
+    Database *db = Database::getInstance();
+    
+    Json::Value invenList = db->getUserInventory();
+    
+    // get other layer
+//    auto gameLayer = (GameScene*)(this->getParent()->getChildByTag(101));
+    
 }
 

@@ -51,6 +51,8 @@ public:
     
     void summonEnemy(float f);
     
+    void addTowerToInven(Json::Value towerInfo);
+    
     void awardGold(int gold);
     
     bool circle(Point circlePoint, float radius, Point circlePointTwo, float radiusTwo);
@@ -67,6 +69,7 @@ public:
     int player_gold;
     Label* player_gold_label;
     bool setupTower;
+    
 };
 
 

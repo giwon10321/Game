@@ -29,11 +29,7 @@ public:
     
     virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
-    void shopEvent(Ref* pSender);
     
-    void invenEvent(Ref* pSender);
-    
-    void purchased(Ref* pSender);
     
     void scrollViewDidScroll(ScrollView* view);
     
@@ -43,6 +39,13 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HudLayer);
 private:
+    
+    void shopEvent(Ref* pSender);
+    void invenEvent(Ref* pSender);
+    
+    void purchase(Ref* pSender);
+    void locate(Ref* pSender);
+    
     cocos2d::Label* label;
     bool isInventory;
     bool isShop;

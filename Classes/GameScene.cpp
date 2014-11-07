@@ -109,15 +109,15 @@ bool GameScene::init()
 //	std::cout<<towerData<<std::endl;
     auto normalTower = new NormalTower(this,PositionForTileCoord(Point(6, 6)),towerData);
     towers.pushBack(normalTower);
-
-//	db->saveToObject(std::vector<std::string>{"inventory","towers"}, normalTower->info);
-//	std::cout<<db->getUserInventory()<<std::endl;
-//	normalTower->info["attackRange"] = 400;
-//	std::cout<<normalTower->info<<std::endl;
-//	db->update(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString(), normalTower->info);
-//	db->remove(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString());
-//	std::cout<<db->getUserInventory()<<std::endl;
-	
+/*
+	db->saveToObject(std::vector<std::string>{"inventory","towers"}, normalTower->info);
+	std::cout<<db->getUserInventory()<<std::endl;
+	normalTower->info["attackRange"] = 400;
+	std::cout<<normalTower->info<<std::endl;
+	db->update(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString(), normalTower->info);
+	db->remove(std::vector<std::string>{"inventory","towers"}, "id", normalTower->info["id"].asString());
+	std::cout<<db->getUserInventory()<<std::endl;
+	*/
 	
 	auto paraNode = ParallaxNode::create();
     
@@ -270,6 +270,14 @@ void GameScene::summonEnemy(float f)
 //    
 //    map->addChild(unit->body, 5);
 //    units.push_front(unit);
+}
+
+void GameScene::addTowerToInven(Json::Value towerInfo)
+{
+    Database *db = Database::getInstance();
+    
+	db->saveToObject(std::vector<std::string>{"inventory","towers"}, towerInfo);
+	
 }
 void GameScene::awardGold(int gold)
 {

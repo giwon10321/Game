@@ -19,6 +19,8 @@ bool HudLayer::init()
     {
         return false;
     }
+	
+	this->ignoreAnchorPointForPosition(true);
     isShop = false;
 
     _touchListener = EventListenerTouchOneByOne::create();
@@ -27,11 +29,11 @@ bool HudLayer::init()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	
-	winSize = Size((visibleSize.width * 3)/4,(visibleSize.height*3)/4);
-	listSize = Size(winSize.width, (winSize.height * 9)/10);
-    tabSize = Size(listSize.width/numberOfTabs, (listSize.height * 1)/10);
+	winSize = Size((visibleSize.width * 3)/4,(visibleSize.height*3)/5);
+	listSize = Size(winSize.width, (winSize.height * 8.5)/10);
+    tabSize = Size(listSize.width/numberOfTabs, (winSize.height * 1.5)/10);
 	
-	winPoint = Point((((visibleSize.width*1)/4)*1)/2, (((visibleSize.height*1)/4)*1)/2);
+	winPoint = Point((((visibleSize.width*1)/4)*1)/2, (((visibleSize.height*2)/5)*1)/2);
 	listPoint = Point(0,0);
 	
     _touchListener->onTouchBegan = CC_CALLBACK_2(HudLayer::onTouchBegan, this);
@@ -57,12 +59,12 @@ void HudLayer::event(Ref* pSender)
   //  log("clicked");
     if(isShop == false)
     {
-        window = LayerColor::create(Color4B(255, 0, 255, 0));
+        window = LayerColor::create(Color4B(0, 0, 0, 0));
         window->setContentSize(winSize);
 		
         window->setPosition(winPoint);
         
-        tab1 = LayerColor::create(Color4B(255, 255, 0, 255));
+        tab1 = LayerColor::create(Color4B(255, 127, 0, 255));
         tab1->setContentSize(Size(tabSize.width, tabSize.height));
         tab1->setPosition(tabSize.width * 0, listSize.height);
         window->addChild(tab1);
@@ -71,26 +73,12 @@ void HudLayer::event(Ref* pSender)
         tab2->setContentSize(Size(tabSize.width, tabSize.height));
         tab2->setPosition(tabSize.width * 1, listSize.height);
         window->addChild(tab2);
-        
-//        auto menu = Menu::create();
-//        
+		
         _touchListener->setSwallowTouches(true);
-//        auto container = LayerColor::create(Color4B(255, 255, 0, 255));
-//        container->setPosition(Vec2::ZERO);
-//        container->setContentSize(Size(800, 300));
-//        container->addChild(menu);
 		
 		shopTableView = ShopTableView::create();
 		shopTableView->setPosition(0,0);
 		window->addChild(shopTableView,5);
-		
-//        scrollView1 = ScrollView::create(Size(visibleSize.width/4*3, visibleSize.height/4*3-50), container);
-//        scrollView1->setBounceable(false);
-//        scrollView1->setDirection(ScrollView::Direction::HORIZONTAL);
-//        scrollView1->setPosition(0, 0);
-//        scrollView1->setContentSize(Size(300*4, visibleSize.height/4*3-50));
-//        scrollView1->setDelegate(this);
-//        window->addChild(scrollView1, 5);
 		
         this->addChild(window);
         isShop = true;

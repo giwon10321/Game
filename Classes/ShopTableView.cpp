@@ -22,28 +22,27 @@ bool ShopTableView::init()
 		return false;
 	}
 	
-	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Size winSize = Size((visibleSize.width * 3)/4,(visibleSize.height*3)/4);
+	Size winSize = Size((visibleSize.width * 3)/4,(visibleSize.height*3)/5);
+	listSize = Size(winSize.width, (winSize.height * 8.5)/10);
 	
-	listSize = Size(winSize.width, (winSize.height * 9)/10);
-	
-	TableView* tableView = TableView::create(this, listSize);
+	tableView = TableView::create(this, listSize);
 	tableView->setDirection(TableView::Direction::HORIZONTAL);
 	tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-	tableView->setAnchorPoint(Vec2(0,0));
+	this->ignoreAnchorPointForPosition(true);
 	tableView->setBounceable(false);
 	
 	tableView->setDelegate(this);
-	addChild(tableView);
-	tableView->reloadData();
+	this->addChild(tableView);
 	
+	this->fetchData();
+
 	return true;
 }
 
 Size ShopTableView::cellSizeForTable(TableView* table)
 {
-	return Size(300,listSize.height);
+	return Size(listSize.width/3,listSize.height);
 }
 
 TableViewCell* ShopTableView::tableCellAtIndex(cocos2d::extension::TableView *table,ssize_t idx)
@@ -56,7 +55,7 @@ TableViewCell* ShopTableView::tableCellAtIndex(cocos2d::extension::TableView *ta
 	auto backgroundColor = Color3B(255,255,255);
 	Sprite* bg = Sprite::create();
 	bg->setAnchorPoint(Point(0,0));
-	bg->setTextureRect(Rect(0,0,300,300));
+	bg->setTextureRect(Rect(0,0,listSize.width/3,listSize.height));
 	bg->setColor(backgroundColor);
 	cell->addChild(bg);
 	
@@ -72,7 +71,13 @@ TableViewCell* ShopTableView::tableCellAtIndex(cocos2d::extension::TableView *ta
 
 ssize_t ShopTableView::numberOfCellsInTableView(cocos2d::extension::TableView *table)
 {
-	return 10;
+	return data.size();
+}
+
+void ShopTableView::fetchData()
+{
+	data = Database::getInstance()->getShopList()["towers"];
+	tableView->reloadData();
 }
 
 void ShopTableView::tableCellTouched(cocos2d::extension::TableView *table, cocos2d::extension::TableViewCell *cell)

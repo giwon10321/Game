@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Database.h"
 #include <extensions/cocos-ext.h>
 
 USING_NS_CC;
@@ -20,7 +21,9 @@ class ShopTableView : public Layer, public TableViewDelegate, public TableViewDa
 {
 	
 public:
+	TableView* tableView;
 	Size listSize;
+	Json::Value data;
 
 	static Scene* createScene();
 	virtual bool init();
@@ -29,8 +32,9 @@ public:
 	virtual TableViewCell* tableCellAtIndex(TableView* table, ssize_t idx);
 	virtual ssize_t numberOfCellsInTableView(TableView* table);
 	
-	virtual	void tableCellTouched(TableView* table, TableViewCell* cell);
+	void fetchData();
 	
+	virtual	void tableCellTouched(TableView* table, TableViewCell* cell);
 	virtual void scrollViewDidScroll(ScrollView* view);
 	virtual void scrollViewDidZoom(ScrollView* view);
 	
